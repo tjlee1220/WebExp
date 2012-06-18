@@ -2,13 +2,13 @@
 
 class Subject {
 
-	function verify_subject($md5)
+	function verify_subject($md5) //verifies if the subject exists
 	{
 		$CI =& get_instance();
-		$CI->load->model('subjects_model','sm');
-		$subject=$CI->sm->getSubjectByMd5($md5);
+		$CI->load->model('subjects_model','sm'); //loads subjects_model to check $md5 
+		$subject=$CI->sm->getSubjectByMd5($md5); // assigns the return value of getSubjectByMd5 to $subject; $data array with information on subject or false
 		//echo var_dump($subject);
-		if($subject==false)return 0;
+		if($subject==false)return 0; // if subject does not exist, end function
 		//elseif($this->check_start($subject['id'])==false) return -1;
 		elseif($this->check_start($subject['id'])==false) echo var_dump($this->check_start($subject['id']));
 		else return $subject;
@@ -23,7 +23,7 @@ class Subject {
 		else return 0;
 	}
 	
-	function check_start($sid)			//returns true if subject has not yet started their task indicated by the first block being submitted
+	function check_start($sid)	//returns true if subject has not yet started their task indicated by the first block being submitted
 	{
 		$CI=&get_instance();
 		$CI->load->model('results_model','rm');
@@ -32,7 +32,7 @@ class Subject {
 		else return true;
 	}
 	
-	function load_subject($sid,$tid)
+	function load_subject($sid,$tid) // loads subject id and task id
 	{
 		$CI=&get_instance();
 		$CI->session->set_userdata('subject',$sid);

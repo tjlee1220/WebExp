@@ -10,6 +10,10 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		//alert('Starting Trials');
 		setTimeout('begin()', 1000);
 	});
+	
+	this.practice = function() {
+		alert("This is a test");	
+	}
 		
 
 	this.begin = function()
@@ -72,7 +76,8 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		//setTimeout("newTrial()",1000);
 		var y=document.getElementById("row_" + this.i).getAttribute("trialno");
 		this.res.push(new result(y,'no response',-1,-1,-1));
-		this.next_trial=setTimeout("repeatTrial()",time);
+		$("#fixation").show();
+		this.next_trial=setTimeout("repeatTrial()",fixation);
 	}
 	
 	this.endExp = function()

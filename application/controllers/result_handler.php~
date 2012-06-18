@@ -44,8 +44,9 @@ class Result_Handler extends CI_Controller {
 				$set_id=$this->session->userdata('set_id');		//need to make dynamic
 			}
 			else{
+				$subject=$this->session->userdata('subject');
 				$this->load->library('subject');
-				$set_id=$this->subject->create_result_set($subject['id'],$subject['task']);
+				$set_id=$this->subject->create_result_set($subject,$task['id']);
 				$this->subject->load_result_set($set_id);
 			}
 			$this->load->model('trials_model','tm');

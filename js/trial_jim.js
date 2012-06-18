@@ -11,7 +11,6 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		setTimeout('begin()', 1000);
 	});
 		
-
 	this.begin = function()
 	{
 		$('#start').hide();

@@ -6,9 +6,9 @@ class Subjects_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN
 			parent::__construct();
 			}
 			
-		function getSubjectByMd5($md5)
+		function getSubjectByMd5($md5) //assigns id, md5 identifier, and assigned task of the subject to array $data
 		{
-			$q="SELECT * FROM subjects WHERE md5_identifier = '$md5'";
+			$q="SELECT * FROM subjects WHERE md5_identifier = '$md5'"; 
 			$res=$this->db->query($q);
 			if($res->num_rows()>0)
 			{

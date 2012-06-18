@@ -4,7 +4,7 @@ class Participant extends CI_Controller {
 
 	function start($md5)
 	{
-		$this->load->library('subject');
+		$this->load->library('subject'); 
 		$subject=$this->subject->verify_subject($md5);
 		//echo var_dump($subject);
 		if($subject==0){

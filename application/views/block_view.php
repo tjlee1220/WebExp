@@ -1,12 +1,15 @@
 <html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml"><head>
 <script type="text/javascript" src="/webexp/js/jquery-1.6.1.min"></script>
 <script type="text/javascript" src="/webexp/js/<?php echo $js_file;?>"></script>
+<script type="text/javascript" src="/webexp/js/trial_prac"></script>
 <script type="text/javascript" src="/webexp/js/json2"></script>
 </head>
 <body>
 
 <div id="instructions" align="center"><font size="20" face="arial" color="black"> <?php echo($instructions);?> </font>
-</br><button name="start_trials" id="start_trials" align="center" ><font size="10" face="arial" color="black">I understand</font></button></div>
+</br><button name="start_trials" id="start_trials" align="center" style="display: none" ><font size="10" face="arial" color="black">Begin Main Task</font></button>
+<button name="start_prac" id="start_prac" align="center" style="" ><font size="10" face="arial" color="black">Begin Practice</font></button></div>
+<div id="practice" style="display : none" align="center"><font size="20" face="arial" color="black"> PRACTICE TRIAL </font></div>
 <div id="start" style="display : none" align="center"><font size="20" face="arial" color="black"> STARTING TRIALS </font></div>
 <div style="margin-top: 150px;"><table width="60%" align="center">
 <?php foreach($trials as $i=>$trial) : ?>
@@ -30,11 +33,18 @@
 	
 
 <script>
+	// Run the practice trial first
+	$('#start_prac').click(function(){
+		$('#instructions').hide();
+		$('#practice').show();
+		trial_prac(<?php echo 10 . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to trial_jim.js
+		});
+	//After the practice trial, run the main trial
 	$('#start_trials').click(function(){
 		$('#instructions').hide();
 		$('#start_trials').remove();
 		$('#start').show();
-		trial(<?php echo $numtrials . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>);
+		trial(<?php echo $numtrials . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to trial_jim.js
 		});
 	//trial(<?php echo $numtrials . ',' . $valid_responses . ',' . $timeout ?>);
 	$(document).keypress(function(e){keypress(e);});

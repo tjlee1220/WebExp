@@ -131,6 +131,8 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 			{
 				$settings=array(
 					'timeout' => $r->timeout,
+					'fb_time' => $r->fb_time,
+					'fixation' => $r->fixation_time,
 					'exp_id' => $r->exp_id,
 					//'loop_time' => $r->loop_time,
 					'valid_responses'=>unserialize($r->valid_responses),

@@ -8,7 +8,7 @@ class Subjects_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN
 			
 		function getSubjectByMd5($md5)
 		{
-			$q="SELECT * FROM subjects WHERE md5_identifier = '$md5'";
+			$q="SELECT * FROM subjects WHERE md5_identifier = '$md5'"; 
 			$res=$this->db->query($q);
 			if($res->num_rows()>0)
 			{

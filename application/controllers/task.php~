@@ -1,0 +1,20 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Task extends CI_Controller {
+
+	//@TODO task handling...
+	//function runtask($id){}
+	
+	function index(){
+		$this->load->library('task');
+		$this->task->loadTask(1);
+		echo var_dump($this->session->userdata('task'));
+	}
+	
+
+
+
+
+
+
+}

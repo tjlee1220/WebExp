@@ -1,0 +1,192 @@
+<?php
+
+class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN FALSE IF QUERIES RETURN NULL SET or If more than one.
+	
+		function __construct(){
+			parent::__construct();
+			}
+			
+		function getTrialsByBlock($block)
+		{
+			$q="SELECT * FROM trials WHERE block_id = $block";
+			$res=$this->db->query($q);
+			$trials=array();
+			foreach($res->result() as $r)
+			{
+				$t=array(
+						'id' => $r->id,
+						'stims' => unserialize($r->stims),
+						'correct' => unserialize($r->correct)
+						);
+				$trials[]=$t;
+			}
+			return $trials;
+		}
+		
+		function getExpByBlock($block)
+		{
+			$q="SELECT exp_id FROM blocks WHERE id=$block";
+			$res=$this->db->query($q);
+			foreach($res->result() as $r)
+			{
+				return $r->exp_id;
+			}
+			
+		}
+		
+		function insertTrial()
+		{
+			$stims=array(2,2);
+			$correct=array(1,1);
+			$r=array(
+					//'id' => 1,
+					'exp_id' => 0,
+					'stims' => serialize($stims),
+					'correct' => serialize($correct)
+					);
+			//$this->db->where('exp_id', 0);
+			$this->db->insert('trials', $r);
+		}
+		
+		
+		function insertTask($arr)
+		{
+			$r=array(
+					//'id' => 1,
+					'blocks' => serialize($arr)
+					);
+			//$this->db->where('exp_id', 0);
+			$this->db->insert('tasks', $r);
+		}
+		
+		function getTask($tid)
+		{
+			$q="SELECT * FROM tasks WHERE id = $tid";
+			$res=$this->db->query($q);
+			foreach($res->result() as $r)
+			{
+				$task=array(
+					'id' => $r->id,
+					'blocks' => unserialize($r->blocks)
+					//'name'=>($r->name)					
+					);
+			}
+			return $task;
+			
+		}
+		
+		function getTaskAnchors()
+		{
+			$q="SELECT * FROM tasks";
+			$res=$this->db->query($q);
+			$tasks=array();
+			$this->load->helper('url');
+			foreach($res->result() as $r)
+			{
+				$tasks[]=anchor('tasks/run/' . $r->id, $r->name, 'title="'.$r->name .'"');
+			}
+			return $tasks;
+		}
+			
+		
+		function getExpSettings($exp_id)
+		{
+			$q="SELECT * FROM experiments WHERE id = $exp_id";
+			$res=$this->db->query($q);
+			foreach($res->result() as $r)
+			{
+				$settings=array(
+					'preserve_stim_mapping' => $r->preserve_stim_mapping,
+					'randomize_stim_mapping' => $r->randomize_stim_mapping,
+					'name'=>($r->name),
+					'is_grouped'=>$r->stims_grouped					
+					);
+			}
+			return $settings;
+		}
+		
+		function insertExperiment($timeout,$validkeys)
+		{
+			$keys=serialize($validkeys);												//Currently the serialization also takes place in the controller necessitating a double unserialize
+																								//@TODO FIX DOUBLE SERIALIZATION PROBLEM
+			$r=array(
+					'timeout' => $timeout,
+					'valid_responses'=>$keys
+					);
+			$this->db->insert('experiments',$r);
+			
+		}
+		
+		
+		function insertBatchTrials($data)
+		{
+			return $this->db->insert_batch('trials', $data);
+		}
+		
+		function getBlockSettings($block_id)
+		{
+			$q="SELECT * FROM blocks WHERE id = $block_id";
+			$res=$this->db->query($q);
+			foreach($res->result() as $r)
+			{
+				$settings=array(
+					'timeout' => $r->timeout,
+					'fb_time' => $r->fb_time,
+					'fixation' => $r->fixation_time,
+					'exp_id' => $r->exp_id,
+					//'loop_time' => $r->loop_time,
+					'valid_responses'=>unserialize($r->valid_responses),
+					//'numstims' => $r->numstims,
+					//'stim_mapping' => $r->preserve_stim_mapping,
+					'js_file' => $r->js_file,
+					'instructions' => $r->instruction_text,
+					'positive_img'=>$r->positive_img,
+					'negative_img'=>$r->negative_img,
+					'neutral_img'=>$r->neutral_img
+					);
+			}
+			return $settings;
+		}		
+		
+		function getImageRules($exp_id,$grouped=false)
+		{
+			$q="SELECT stim_id,img,stim_grp FROM stimulus_images WHERE exp_id=$exp_id";
+			$res=$this->db->query($q);
+			$rules=array();
+			if($grouped==true)		//long story
+			{
+				foreach($res->result() as $key=>$r)
+				{
+					$rules[$r->stim_grp][$key]['img']=$r->img;
+					$rules[$r->stim_grp][$key]['id']=$r->stim_id;			//RETURNS ARRAY[STIMULUS GROUP][0,1...]['img'/'id']
+				}
+			}
+			else
+			{
+				foreach($res->result() as $r)
+				{
+					$rules[$r->stim_id]['img']=$r->img;
+					//$rules[$r->stim_id]['group']=$r->stim_grp;
+					$rules[$r->stim_id]['id']=$r->stim_id;
+				}
+			}
+			return $rules;
+		}
+		
+		function save_block_result($set_id,$block,$order,$rules)
+		{
+			$data=array(
+					'set_id' => $set_id,
+					'block_id' => $block,
+					'order_presented'=>$order,
+					'stim_map'=>serialize($rules)
+					);
+			$this->db->insert('block_results',$data);
+			return $this->db->insert_id();
+		}
+
+
+
+
+}
+?>

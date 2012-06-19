@@ -95,6 +95,10 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 	
 	this.is_correct=function(selected)
 	{
+		//In the practice trial no feedback is given
+		//Each response will provide a neutral feedback
+		//However if a negative response is given, the bg color will still shift to red
+		
 		var x=document.getElementById("row_" + this.i).getAttribute("value");
 		x=eval(x);
 		//var y=document.getElementById("row_" + this.i).getAttribute("trialno");
@@ -104,10 +108,10 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 		if(x[selected]==1)
 		{
 			//$("#positive_feedback").toggle();
-			var div=$('#positive_feedback_div')
+			var div=$('#neutral_feedback_div')
 			
 			//$("#cell_"+ this.i + "_" + selected).parent().find('img[alt!="blank.png"]').parent().parent().attr('bgColor','#00FF00');
-			td.attr('bgColor', '#00FF00');
+			td.attr('bgColor', '#6D7B8D');
 			//div.unhide()
 			//td.append(div);
 			div.clone().appendTo(td);
@@ -118,7 +122,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 		{
 			//$("#negative_feedback").toggle();
 			//$("#cell_"+ this.i + "_" + selected).parent().find('img[alt!="blank.png"]').parent().parent().attr('bgColor','#FF0000');
-			var div=$('#negative_feedback_div')
+			var div=$('#neutral_feedback_div')
 			td.attr('bgColor','#FF0000');
 			//td.append(div);
 			div.clone().appendTo(td);

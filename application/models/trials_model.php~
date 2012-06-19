@@ -6,9 +6,9 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 			parent::__construct();
 			}
 			
-		function getTrialsByBlock($block)
+		function getTrialsByBlock($block)		
 		{
-			$q="SELECT * FROM trials WHERE block_id = $block";
+			$q="SELECT * FROM trials WHERE block_id = $block"; //set $q equal to sql command
 			$res=$this->db->query($q);
 			$trials=array();
 			foreach($res->result() as $r)

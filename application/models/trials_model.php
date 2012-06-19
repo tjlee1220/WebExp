@@ -142,7 +142,8 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 					'instructions' => $r->instruction_text,
 					'positive_img'=>$r->positive_img,
 					'negative_img'=>$r->negative_img,
-					'neutral_img'=>$r->neutral_img
+					'neutral_img'=>$r->neutral_img,
+					'practice'=>$r->practice
 					);
 			}
 			return $settings;

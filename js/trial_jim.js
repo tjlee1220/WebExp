@@ -1,3 +1,4 @@
+//Javascript Function for the main trial
 function trial(numstims,validkeys,time,fb_time,fixation){
 	this.timer=0;					//bool variable for whether or not this.timer is on. 0 - Off , 1- On
 	this.rt_start;					//stores the current time at the beginning of each trial. Global because needs to be accessed by keypress function
@@ -10,7 +11,9 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		//alert('Starting Trials');
 		setTimeout('begin()', 1000);
 	});
-		
+	
+	//setup the page to begin practice task
+	//Show fixation cross, run startTrial()	
 	this.begin = function()
 	{
 		$('#start').hide();
@@ -75,6 +78,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		this.next_trial=setTimeout("repeatTrial()",fixation);
 	}
 	
+	//When the predetermined number of trials is reached; end trial and send results to /webexp/index.php/result_handler/submit
 	this.endExp = function()
 	{
 		//alert(this.res);
@@ -139,6 +143,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		
 	}
 	
+	//clears the page in preparation for next stimuli 
 	this.clear = function(repeat)
 	{
 		var td=$("td[id^='cell_"+this.i +"']").parent().find('img[alt!="blank.png"]').parent().parent();
@@ -151,6 +156,8 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		else setTimeout('repeatTrial()',fixation);
 	}
 	
+	//Deals with keys pressed
+	//Makes sure that they key pressed is a valid key
 	this.keypress = function(e){
 	
 	//function keyCatcher(e){

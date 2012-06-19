@@ -6,6 +6,8 @@ class Subjects_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN
 			parent::__construct();
 			}
 			
+		//Takes md5 as arguement
+		//searches for a match within the sql database 	
 		function getSubjectByMd5($md5) //assigns id, md5 identifier, and assigned task of the subject to array $data
 		{
 			$q="SELECT * FROM subjects WHERE md5_identifier = '$md5'"; 
@@ -20,6 +22,7 @@ class Subjects_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN
 						'task'=>$r->assigned_task
 						);
 				}
+				//returns id, md5, and task associated with the md5 passed in the function 
 				return $data;
 			}else return false;
 			

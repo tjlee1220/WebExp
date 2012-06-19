@@ -1,4 +1,4 @@
-//Function for the first practice trial before main trial is executed
+//Javascript Function for the first practice trial before main trial is executed
 
 function trial_prac(numstims,validkeys,time,fb_time,fixation){
 	this.timer=0;					//bool variable for whether or not this.timer is on. 0 - Off , 1- On
@@ -14,7 +14,8 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 		setTimeout('begin()', 1000);
 	});
 		
-
+	//setup the page to begin practice task
+	//Show fixation cross, run startTrial()
 	this.begin = function()
 	{
 		alert("Before starting, you must complete a practice trial in order to ensure that you understand the task");
@@ -47,6 +48,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 			// If the iterator has reached predefined number of trials. End practice, return to the start to begin main trial
 			alert('End of Practice.');
 			checkWrongAns();
+			//If too many wrong responses, start over practice trial
 			if (checkWrongAns() == true) {
 				$('#practice').remove();
 				$('#start_prac').remove();
@@ -128,7 +130,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 			div.clone().appendTo(td);
 			setTimeout('clear(true)',fb_time);
 			alert("You provided an incorrect response.\n\nRemeber: \nIf the picture is YELLOW, press the LEFT ('d') key.\nIf the picutre is BLUE, press the RIGHT ('k') key.");
-			this.numWrong++;
+			this.numWrong++; //increase variable numWrong
 			return 0;
 		}
 		else if(x[selected]==2)
@@ -152,6 +154,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 		
 	}
 	
+	//clears the page in preparation for next stimuli 
 	this.clear = function(repeat)
 	{
 		var td=$("td[id^='cell_"+this.i +"']").parent().find('img[alt!="blank.png"]').parent().parent();
@@ -164,6 +167,8 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 		else setTimeout('repeatTrial()',fixation);
 	}
 	
+	//Deals with keys pressed
+	//Makes sure that they key pressed is a valid key
 	this.keypress = function(e){
 	
 	//function keyCatcher(e){
@@ -245,7 +250,8 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 	
 	this.checkWrongAns = function() {
 		// Checks number of wrong responses during the practice trial
-		// If the number of wrong responses is too high, repeat practice
+		// If the number of wrong responses is too high, return false and repeat practice
+		// Number of allowed incorrect responses is too; easily changed
 		if (this.numWrong > 2) {
 			alert("You provided more than 2 incorrect responses.\n Please repeat the practice again to ensure you understand the task.");
 			return false;

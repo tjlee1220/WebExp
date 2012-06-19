@@ -1,5 +1,7 @@
 <?php
 
+//Trials model deals with database connectivity associated with each trial
+//Pulls settings from sql database 
 class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN FALSE IF QUERIES RETURN NULL SET or If more than one.
 	
 		function __construct(){
@@ -8,7 +10,7 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 			
 		function getTrialsByBlock($block)		
 		{
-			$q="SELECT * FROM trials WHERE block_id = $block"; //set $q equal to sql command
+			$q="SELECT * FROM trials WHERE block_id = $block"; 
 			$res=$this->db->query($q);
 			$trials=array();
 			foreach($res->result() as $r)
@@ -123,6 +125,8 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 			return $this->db->insert_batch('trials', $data);
 		}
 		
+		//Straight forward
+		//Takes the settings associated with each block and assigns them to variables within the $settings array
 		function getBlockSettings($block_id)
 		{
 			$q="SELECT * FROM blocks WHERE id = $block_id";
@@ -143,12 +147,13 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 					'positive_img'=>$r->positive_img,
 					'negative_img'=>$r->negative_img,
 					'neutral_img'=>$r->neutral_img,
-					'practice'=>$r->practice
+					'practice'=>$r->practice //Added to facilitate the optional practice feature; 1 if on, 0 if off
 					);
 			}
 			return $settings;
 		}		
 		
+		//Pulls settings concerning images from sql database
 		function getImageRules($exp_id,$grouped=false)
 		{
 			$q="SELECT stim_id,img,stim_grp FROM stimulus_images WHERE exp_id=$exp_id";

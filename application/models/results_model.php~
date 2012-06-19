@@ -1,5 +1,6 @@
 <?php
 
+//This is a test comment
 //Deals with taking results settings from database
 //Also deals with adding block results to the database
 class Results_Model extends CI_Model {

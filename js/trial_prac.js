@@ -1,5 +1,5 @@
 //Javascript Function for the first practice trial before main trial is executed
-
+//Test comment
 function trial_prac(numstims,validkeys,time,fb_time,fixation){
 	this.timer=0;					//bool variable for whether or not this.timer is on. 0 - Off , 1- On
 	this.rt_start;					//stores the current time at the beginning of each trial. Global because needs to be accessed by keypress function

@@ -4,6 +4,9 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	this.rt_start;					//stores the current time at the beginning of each trial. Global because needs to be accessed by keypress function
 	this.timeout;					//timeout timer
 	this.next_trial;
+	this.numWrong = 0;         //Records number of incorrect responses
+	this.numRight = 0;			//Records number of correct responses
+	this.accuracy;					//Variable will be used later on to hold accuracy of subject
 	this.i=-1; //index of current trial
 	this.res=new Array();
 	$(document).ready(function(){
@@ -86,6 +89,9 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			alert(ind + " : " + val.key + " = > " + val.rt + "ms");
 		}); */
 		//alert(JSON.stringify(this.res)$('#json_res').val(JSON.stringify(this.res)););
+		
+		this.accuracy = calcAccuracy(this.numWrong);	//calculates accuracy of the subject and store it in a variable	
+		
 		$('#json_res').val(JSON.stringify(this.res));
 		document.myform.submit();
 	}
@@ -109,6 +115,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			//td.append(div);
 			div.clone().appendTo(td);
 			setTimeout('clear()',fb_time);
+			this.numRight++;
 			return 1;
 		}
 		else if(x[selected]==0)
@@ -120,6 +127,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			//td.append(div);
 			div.clone().appendTo(td);
 			setTimeout('clear(true)',fb_time);
+			this.numWrong++
 			return 0;
 		}
 		else if(x[selected]==2)
@@ -132,6 +140,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			//td.append(div);
 			div.clone().appendTo(td);
 			setTimeout('clear()',fb_time);
+			this.numRight++;
 			return 2;
 		}
 		else if(x[selected]==3)
@@ -236,6 +245,12 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	
 	
 	}*/
+	
+	this.calcAccuracy = function(numWrong) {
+		//calculate the accuracy of the subject		
+		return ((numstims-numWrong)/numstims)*100;
+			
+	}
 }
 function result(ind,key,selected,correct,rt){
 	this.trialid=ind;

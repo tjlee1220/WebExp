@@ -37,7 +37,7 @@
 	$('#start_prac').click(function(){
 		$('#instructions').hide();
 		$('#practice').show();
-		trial_prac(<?php echo 10 . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to trial_jim.js
+		trial_prac(<?php echo 10 . ',' . $valid_responses . ',' . 4000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to trial_prac.js
 	});
 	//After the practice trial, run the main trial
 	$('#start_trials').click(function(){

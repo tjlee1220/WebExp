@@ -6,8 +6,8 @@
 </head>
 <body>
 <div id="instructions" align="center"><font size="20" face="arial" color="black"> <?php echo($instructions);?> </font>
-<!--If practice is turned on '1', then practice trial must be completed in order to begin the main task-->
-<!--If practice is turned off '0', then the main task can be started right away-->
+<!--If practice is turned on '1', then practice trial must be completed in order to show the main task button-->
+<!--If practice is turned off '0', then the main task button will show up right away-->
 </br><button name="start_trials" id="start_trials" align="center" style="<?php if($practice==1) {echo 'display: none';}; ?>" ><font size="10" face="arial" color="black">Begin Main Task</font></button>
 <button name="start_prac" id="start_prac" align="center" style="<?php if($practice==0) {echo 'display: none';}; ?>" ><font size="10" face="arial" color="black">I understand</font></button></div>
 <div id="practice" style="display : none" align="center"><font size="20" face="arial" color="black"> PRACTICE TRIAL </font></div>
@@ -37,7 +37,7 @@
 	$('#start_prac').click(function(){
 		$('#instructions').hide();
 		$('#practice').show();
-		trial_prac(<?php echo 10 . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to trial_jim.js
+		trial_prac(<?php echo 10 . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to trial_prac.js
 	});
 	//After the practice trial, run the main trial
 	$('#start_trials').click(function(){

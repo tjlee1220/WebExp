@@ -6,8 +6,8 @@ function trial(numstims,validkeys,time){
 	this.i=-1; //index of current trial
 	this.res=new Array();
 	$(document).ready(function(){
-		$('#subject').val(prompt("Please Enter Your Subject Number",0));		
-		alert('Starting Trials');
+		//$('#subject').val(prompt("Please Enter Your Subject Number",0));		
+		//alert('Starting Trials');
 		setTimeout('startTrial()', 1000);
 	});
 		

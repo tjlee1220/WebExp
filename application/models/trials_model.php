@@ -134,6 +134,7 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 			foreach($res->result() as $r)
 			{
 				$settings=array(
+					'name' =>$r->name,
 					'timeout' => $r->timeout,
 					'fb_time' => $r->fb_time,
 					'fixation' => $r->fixation_time,
@@ -143,6 +144,7 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 					//'numstims' => $r->numstims,
 					//'stim_mapping' => $r->preserve_stim_mapping,
 					'js_file' => $r->js_file,
+					'prac_js' => $r->prac_js,
 					'instructions' => $r->instruction_text,
 					'positive_img'=>$r->positive_img,
 					'negative_img'=>$r->negative_img,

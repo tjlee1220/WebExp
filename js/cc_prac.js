@@ -60,9 +60,10 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 				
 				alert("Feel free to reread the instructions and then begin the main task.");
 			} else {
-				begin();
 				this.i =- 1;
 				this.numWrong = 0;	
+				this.numRight = 0;
+				begin();
 			}
 		}
 	}

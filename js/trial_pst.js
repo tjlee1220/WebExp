@@ -1,13 +1,16 @@
-function trial(numstims,validkeys,time){
+function trial(numstims,validkeys,time,fb_time,fixation){
 	this.timer=0;					//bool variable for whether or not this.timer is on. 0 - Off , 1- On
 	this.rt_start;					//stores the current time at the beginning of each trial. Global because needs to be accessed by keypress function
 	this.timeout;					//timeout timer
 	this.next_trial;
 	this.i=-1; //index of current trial
+	this.numRight = 0;
+	this.numWrong = 0;
+	this.accuracy;
 	this.res=new Array();
 	$(document).ready(function(){
-		$('#subject').val(prompt("Please Enter Your Subject Number",0));		
-		alert('Starting Trials');
+		//$('#subject').val(prompt("Please Enter Your Subject Number",0));		
+		//alert('Starting Trials');
 		setTimeout('startTrial()', 1000);
 	});
 		
@@ -35,6 +38,11 @@ function trial(numstims,validkeys,time){
 		} 
 		else
 		{
+			this.acc = calcAccuracy(this.numWrong);
+			if (this.acc < 80 ) {
+				alert("You're accuracy was not enough!")
+				startTrial();
+			}
 		 	endExp();
 		}
 	}
@@ -76,12 +84,14 @@ function trial(numstims,validkeys,time){
 			//alert('Correct');
 			$("#positive_feedback").toggle();
 			setTimeout('$("#positive_feedback").toggle()',500);
+			this.numRight++;
 			return 1;
 		}
 		else if(x[selected]==0)
 		{
 			$("#negative_feedback").toggle();
 			setTimeout('$("#negative_feedback").toggle()',500);
+			this.numWrong++;			
 			return 0;
 		}
 		else if(x[selected]==2)
@@ -176,6 +186,11 @@ function trial(numstims,validkeys,time){
 	
 	
 	}*/
+	
+	this.calcAccuracy = function(numWrong) {
+		//calculate the accuracy of the subject		
+		return ((numstims-numWrong)/numstims)*100;			
+	}
 }
 function result(ind,key,selected,correct,rt){
 	this.trialid=ind;

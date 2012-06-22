@@ -1,7 +1,8 @@
 <html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml"><head>
+<title><?php echo $name;?></title>
 <script type="text/javascript" src="/webexp/js/jquery-1.6.1.min"></script>
 <script type="text/javascript" src="/webexp/js/<?php echo $js_file;?>"></script>
-<script type="text/javascript" src="/webexp/js/trial_prac"></script>
+<script type="text/javascript" src="/webexp/js/<?php echo $prac_js;?>"></script>
 <script type="text/javascript" src="/webexp/js/json2"></script>
 </head>
 <body>
@@ -37,14 +38,14 @@
 	$('#start_prac').click(function(){
 		$('#instructions').hide();
 		$('#practice').show();
-		trial_prac(<?php echo 10 . ',' . $valid_responses . ',' . 4000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to trial_prac.js
+		trial_prac(<?php echo 10 . ',' . $valid_responses . ',' . 4000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to practice js file
 	});
 	//After the practice trial, run the main trial
 	$('#start_trials').click(function(){
 		$('#instructions').hide();
 		$('#start_trials').remove();
 		$('#start').show();
-		trial(<?php echo $numtrials . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to trial_jim.js
+		trial(<?php echo $numtrials . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to main js file
 	});
 	//trial(<?php echo $numtrials . ',' . $valid_responses . ',' . $timeout ?>);
 	$(document).keypress(function(e){keypress(e);});

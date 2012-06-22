@@ -134,6 +134,7 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 			foreach($res->result() as $r)
 			{
 				$settings=array(
+					'name' =>$r->block_name,
 					'timeout' => $r->timeout,
 					'fb_time' => $r->fb_time,
 					'fixation' => $r->fixation_time,
@@ -143,6 +144,7 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 					//'numstims' => $r->numstims,
 					//'stim_mapping' => $r->preserve_stim_mapping,
 					'js_file' => $r->js_file,
+					'prac_js' => $r->prac_js,
 					'instructions' => $r->instruction_text,
 					'positive_img'=>$r->positive_img,
 					'negative_img'=>$r->negative_img,
@@ -153,6 +155,7 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 			return $settings;
 		}		
 		
+		//Pulls settings concerning images from sql database
 		function getImageRules($exp_id,$grouped=false)
 		{
 			$q="SELECT stim_id,img,stim_grp FROM stimulus_images WHERE exp_id=$exp_id";

@@ -141,7 +141,7 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 					'exp_id' => $r->exp_id,
 					//'loop_time' => $r->loop_time,
 					'valid_responses'=>unserialize($r->valid_responses),
-					//'numstims' => $r->numstims,
+					'numstims' => $r->numstims,
 					//'stim_mapping' => $r->preserve_stim_mapping,
 					'js_file' => $r->js_file,
 					'prac_js' => $r->prac_js,

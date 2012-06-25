@@ -17,7 +17,7 @@
 <?php foreach($trials as $i=>$trial) : ?>
 	<tr id="row_<?php echo($i);?>" value="<?php echo($trial['correct_array']);?>" trialno="<?php echo($trial['id']);?>"  style="display : none">
 	<?php foreach($trial['stims'] as $key=>$t) : ?>	
-	<td id="cell_<?php echo($i . "_" . $key);?>"><td></td><td></td><td></td><td></td><td></td><td></td><div align="center" ><img src="/webexp/img/<?php echo($t['img']);?>"  alt="<?php echo($t['img']);?>" width="200" height="200" /></div></td>
+	<td id="cell_<?php echo($i . "_" . $key);?>"><div align="center" ><img src="/webexp/img/<?php echo($t['img']);?>"  alt="<?php echo($t['img']);?>" width="200" height="200" /></div></td>
 	<?php endforeach; ?></tr>
 	<?php endforeach; ?>
 	<tr id="positive_feedback" name="feedback"style="display : none"><td colspan="2"><div style="padding-top: 25px;" align="center" id="positive_feedback_div" name="feedback"><img src="/webexp/img/<?php echo($positive_img);?> " width="100" height="100" alt="+1" /><div></td></tr>

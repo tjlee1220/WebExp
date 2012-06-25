@@ -11,11 +11,14 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	$(document).ready(function(){
 		//$('#subject').val(prompt("Please Enter Your Subject Number",0));		
 		//alert('Starting Trials');
-		setTimeout('startTrial()', 1000);
+		setTimeout('begin()', 1000);
 	});
 		
-
-
+		this.begin = function() {
+			$('#start').hide();
+			alert("The trial is about to begin");
+			setTimeout("startTrial()");
+		}
 	
 	this.startTrial = function()
 	{
@@ -41,9 +44,12 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			this.acc = calcAccuracy(this.numWrong);
 			if (this.acc < 80 ) {
 				alert("You're accuracy was not enough!")
-				startTrial();
-			}
-		 	endExp();
+				this.numWrong = 0;
+				this.numRight = 0;
+				begin();
+			} else {
+		 		endExp();
+			}		
 		}
 	}
 	

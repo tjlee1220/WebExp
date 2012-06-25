@@ -1,5 +1,5 @@
 //Javascript Function for the first practice trial before main trial is executed
-//This is a test comment
+
 function trial_prac(numstims,validkeys,time,fb_time,fixation){
 	this.timer=0;					//bool variable for whether or not this.timer is on. 0 - Off , 1- On
 	this.rt_start;					//stores the current time at the beginning of each trial. Global because needs to be accessed by keypress function
@@ -9,6 +9,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 	this.numWrong = 0;         //Records number of incorrect responses
 	this.numRight = 0;			//Records number of correct responses
 	this.accuracy;	 				
+	this.iprac = 64;
 	this.res=new Array();
 	$(document).ready(function(){
 		//$('#subject').val(prompt("Please Enter Your Subject Number",0));		
@@ -30,6 +31,13 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 		/*basic function for running trials - start trial is the primary driver for the experiments - */
 		$("#fixation").hide();
 		this.i++; //increments at beginning of next trial.
+		if (this.iprac == 64) {
+			this.iprac = 65;
+		} else if (this.iprac == 65){
+			this.iprac = 64;	
+		} else {
+			this.iprac = 64;
+		}
 			
 		if(this.i<numstims)			//if iterator is less than the predefined number of trials.
 		{
@@ -38,7 +46,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 			 //var r=trialorder[i];
 			 //divid = "divids"+r;
 			 //toggle();
-			 $("#row_"+this.i).toggle();									//toggles any element with the id of the iterator. Idea being all elements start off hidden and are unhidden one at a time.
+			 $("#row_"+this.iprac).toggle();									//toggles any element with the id of the iterator. Idea being all elements start off hidden and are unhidden one at a time.
 			 this.timer=1;													//timer is on once the image is shown. allows for keypresses to be collected
 			 this.rt_start = new Date().getTime();					//stores current time
 			 this.timeout=setTimeout("tooSlow()",time);			//callback to tooSlow after the number of milliseconds indicated. 
@@ -76,7 +84,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 			 //var r=trialorder[i];
 			 //divid = "divids"+r;
 			 //toggle();
-			 $("#row_"+this.i).toggle();									//toggles any element with the id of the iterator. Idea being all elements start off hidden and are unhidden one at a time.
+			 $("#row_"+this.iprac).toggle();									//toggles any element with the id of the iterator. Idea being all elements start off hidden and are unhidden one at a time.
 			 this.timer=1;													//timer is on once the image is shown. allows for keypresses to be collected
 			 this.rt_start = new Date().getTime();					//stores current time
 			 this.timeout=setTimeout("tooSlow()",time);			//callback to tooSlow after the number of milliseconds indicated. 
@@ -91,9 +99,9 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 		this.timer=0;
 		alert("Too Slow! Make sure you click back on the main screen after closing this otherwise it will not register keyboard clicks");
 		//responses=responses+"nr, nr, ";
-		$("#row_"+this.i).toggle();
+		$("#row_"+this.iprac).toggle();
 		//setTimeout("newTrial()",1000);
-		var y=document.getElementById("row_" + this.i).getAttribute("trialno");
+		var y=document.getElementById("row_" + this.iprac).getAttribute("trialno");
 		this.res.push(new result(y,'no response',-1,-1,-1));
 		$("#fixation").show();
 		this.next_trial=setTimeout("repeatTrial()",fixation);
@@ -105,12 +113,12 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 		//Each response will provide a neutral feedback
 		//However if a negative response is given, the bg color will still shift to red
 		
-		var x=document.getElementById("row_" + this.i).getAttribute("value");
+		var x=document.getElementById("row_" + this.iprac).getAttribute("value");
 		x=eval(x);
 		//var y=document.getElementById("row_" + this.i).getAttribute("trialno");
 		//alert(x + '<br>' + selected + "<br>" + "Checking if " + x[selected] + "= 1");
 		//alert("Completed Trial no: " + y);
-		var td=$("#cell_"+ this.i + "_" + selected).parent().find('img[alt!="blank.png"]').parent().parent();
+		var td=$("#cell_"+ this.iprac + "_" + selected).parent().find('img[alt!="blank.png"]').parent().parent();
 		if(x[selected]==1)
 		{
 			//$("#positive_feedback").toggle();
@@ -163,10 +171,10 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 	//clears the page in preparation for next stimuli 
 	this.clear = function(repeat)
 	{
-		var td=$("td[id^='cell_"+this.i +"']").parent().find('img[alt!="blank.png"]').parent().parent();
+		var td=$("td[id^='cell_"+this.iprac +"']").parent().find('img[alt!="blank.png"]').parent().parent();
 		td.attr('bgColor','#FFFFFF');
 		td.find('div[name="feedback"]').remove();
-		$("#row_"+this.i).toggle();
+		$("#row_"+this.iprac).toggle();
 		$("#fixation").show();
 		if(!repeat) var repeat=false;
 		if (repeat==false)	setTimeout('startTrial()',fixation);
@@ -214,7 +222,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 			clearTimeout(this.next_trial);
 			var res = actualkey;
 			var iscorrect=is_correct(selected);
-			var y=document.getElementById("row_" + this.i).getAttribute("trialno");
+			var y=document.getElementById("row_" + this.iprac).getAttribute("trialno");
 			this.res.push(new result(y,res,selected,iscorrect,rt_trial));
 			
 			//$("#row_"+this.i).toggle();

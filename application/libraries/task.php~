@@ -27,10 +27,10 @@ class Task {
 		
 		$CI =& get_instance();
 		$CI->load->library('subject');
-		echo var_dump($CI->subject->verify_subjectbyid($CI->session->userdata('subject')));
+		//echo var_dump($CI->subject->verify_subjectbyid($CI->session->userdata('subject')));
 		if($CI->subject->verify_subjectbyid($CI->session->userdata('subject'))==-1)
 		{
-			echo "subject has already started this task it is no longer accessible wohoo";
+			echo "subject has already started this task it is no longer accessible";
 			exit();
 		}
 		$task=$CI->session->userdata('task');		

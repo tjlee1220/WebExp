@@ -20,6 +20,14 @@
 	<td id="cell_<?php echo($i . "_" . $key);?>"><div align="center" ><img src="/webexp/img/<?php echo($t['img']);?>"  alt="<?php echo($t['img']);?>" width="200" height="200" /></div></td>
 	<?php endforeach; ?></tr>
 	<?php endforeach; ?>
+	<tr id="row_64" value="[0,2]" trialno="336" style="display : none">
+		<td id="cell_64_0"><div align="center" ><img src="/webexp/img/CC/Blue_Circle.png" alt="CC/Blue_Circle.png" width="200" height="200" /></div></td>
+		<td id="cell_64_1"><div align="center" ><img src="/webexp/img/blank.png" alt="blank.png" width="200" height="200" /></div></td>
+	</tr> 
+	<tr id="row_65" value="[2,0]" trialno="383" style="display : none">
+		<td id="cell_65_0"><div align="center" ><img src="/webexp/img/blank.png" alt="blank.png" width="200" height="200" /></div></td>
+		<td id="cell_65_1"><div align="center" ><img src="/webexp/img/CC/Yellow_Star.png" alt="CC/Yellow_Star.png" width="200" height="200" /></div></td>
+	</tr> 
 	<tr id="positive_feedback" name="feedback"style="display : none"><td colspan="2"><div style="padding-top: 25px;" align="center" id="positive_feedback_div" name="feedback"><img src="/webexp/img/<?php echo($positive_img);?> " width="100" height="100" alt="+1" /><div></td></tr>
 	<tr id="negative_feedback" name="feedback" style="display : none"><td colspan="2"><div style="padding-top: 25px;" align="center" id="negative_feedback_div" name="feedback"><img src="/webexp/img/<?php echo($negative_img);?> " width="100" height="100" alt="-3" /><div></td></tr>
 	<tr id="neutral_feedback" name="feedback" style="display : none"><td colspan="2"><div style="padding-top: 25px;" align="center" id="neutral_feedback_div" name="feedback"><img src="/webexp/img/<?php echo($neutral_img);?> " width="100" height="100" alt="0" /><div></td></tr>

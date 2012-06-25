@@ -30,8 +30,8 @@ class Task {
 		//echo var_dump($CI->subject->verify_subjectbyid($CI->session->userdata('subject')));
 		if($CI->subject->verify_subjectbyid($CI->session->userdata('subject'))==-1)
 		{
-			echo "subject has already started this task it is no longer accessible";
-			exit();
+			//echo "subject has already started this task it is no longer accessible";
+			//exit();
 		}
 		$task=$CI->session->userdata('task');		
 		if($CI->session->userdata('ind')<count($task['blocks'])) {

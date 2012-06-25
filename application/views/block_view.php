@@ -13,7 +13,7 @@
 <button name="start_prac" id="start_prac" align="center" style="<?php if($practice==0) {echo 'display: none';}; ?>" ><font size="10" face="arial" color="black">I understand</font></button></div>
 <div id="practice" style="display : none" align="center"><font size="20" face="arial" color="black"> PRACTICE TRIAL </font></div>
 <div id="start" style="display : none" align="center"><font size="20" face="arial" color="black"> STARTING TRIALS </font></div>
-<div style="margin-top: 150px;"><table width="60%" align="center">
+<div style="margin-top: 150px;"><table width="100%" align="center">
 <?php foreach($trials as $i=>$trial) : ?>
 	<tr id="row_<?php echo($i);?>" value="<?php echo($trial['correct_array']);?>" trialno="<?php echo($trial['id']);?>"  style="display : none">
 	<?php foreach($trial['stims'] as $key=>$t) : ?>	

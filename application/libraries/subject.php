@@ -57,13 +57,4 @@ class Subject {
 		
 	}
 	
-	function check_progress($taskDone) {
-		if($taskDone == 1) {
-			echo "subject has already started this task it is no longer accessible";
-			exit();
-		} else {
-			return false;
-		}
-	}
-	
 }

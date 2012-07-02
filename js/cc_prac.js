@@ -21,7 +21,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 	//Show fixation cross, run startTrial()
 	this.begin = function()
 	{
-		alert("Before starting, you must complete a practice trial in order to ensure that you understand the task.\nNOTE: You will not receive any feedback for your responses in the practice trial.");
+		alert("Before starting, you must complete a practice trial in order to ensure that you understand the task.\nNOTE: You will not receive any feedback for your responses in the practice trial.\n\nYou must not make more than 16 errors in order to progress.\n\nRemember: Yellow means press 'd' and Blue means press 'k'.");
 		$('#fixation').show();
 		setTimeout("startTrial()", fixation);
 	}

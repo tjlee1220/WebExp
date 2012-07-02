@@ -34,10 +34,10 @@ class Task {
 			//echo "subject has already started this task it is no longer accessible";
 			//exit();
 		}
-		if($CI->subject->check_progress($CI->sm->$taskDone)) {
+		/*if($CI->subject->check_progress($CI->sm->$taskDone)) {
 			echo "subject has already started this task it is no longer accessible";
 			exit();
-		}
+		}*/
 		$task=$CI->session->userdata('task');		
 		if($CI->session->userdata('ind')<count($task['blocks'])) {
 			

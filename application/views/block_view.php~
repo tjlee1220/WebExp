@@ -27,7 +27,7 @@
 	<?php endforeach; ?></tr>
 	<?php endforeach; ?>
 	<tr id="row_64" value="[0,2]" trialno="336" style="display : none">
-		<td id="cell_64_0"><div align="center" ><img src="/webexp/img/CC/Blue_Circle.png" alt="CC/Blue_Circle.png" width="200" height="200" /></div></td>
+		<td id="cell_64_0"><div align="center" ><img src="/webexp/img/CC/blue_triangle.png"  alt="CC/blue_triangle.png" width="200" height="200" /></div></td>
 		<td id="cell_64_1"><div align="center" ><img src="/webexp/img/blank.png" alt="blank.png" width="200" height="200" /></div></td>
 	</tr> 
 	<tr id="row_65" value="[2,0]" trialno="383" style="display : none">
@@ -36,7 +36,7 @@
 	</tr>
 	<tr id="row_66" value="[0,1]" trialno="324"  style="display : none">
 		<td id="cell_66_0"><div align="center" ><img src="/webexp/img/blank.png"  alt="blank.png" width="200" height="200" /></div></td>
-		<td id="cell_66_1"><div align="center" ><img src="/webexp/img/CC/Blue_Circle.png"  alt="CC/Blue_Circle.png" width="200" height="200" /></div></td>
+		<td id="cell_66_1"><div align="center" ><img src="/webexp/img/CC/blue_triangle.png"  alt="CC/blue_triangle.png" width="200" height="200" /></div></td>
 	</tr> 
 	<tr id="row_67" value="[2,0]" trialno="376"  style="display : none">
 		<td id="cell_67_0"><div align="center" ><img src="/webexp/img/CC/yellow_hex.png" alt="CC/yellow_hex.png" width="200" height="200" /></div></td>

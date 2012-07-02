@@ -82,7 +82,7 @@ a:hover {
           </tr> 
           <tr> 
             <td><div align="center" class="style26"> 
-              <p><img src="/webexp/images/lncc.png" width="234" height="292"/></p> 
+              <p><img src="/webexp/img/lncc.png" width="234" height="292"/></p> 
               <p>&nbsp;</p> 
             </div></td> 
           </tr> 

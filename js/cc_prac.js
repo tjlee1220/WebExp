@@ -9,7 +9,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 	this.numWrong = 0;         //Records number of incorrect responses
 	this.numRight = 0;			//Records number of correct responses
 	this.accuracy;	 				
-	this.iprac = 64;
+	this.iprac = 63;
 	this.res=new Array();
 	$(document).ready(function(){
 		//$('#subject').val(prompt("Please Enter Your Subject Number",0));		
@@ -31,10 +31,8 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 		/*basic function for running trials - start trial is the primary driver for the experiments - */
 		$("#fixation").hide();
 		this.i++; //increments at beginning of next trial.
-		if (this.iprac == 64) {
-			this.iprac = 65;
-		} else if (this.iprac == 65){
-			this.iprac = 64;	
+		if (this.iprac < 67) {
+			this.iprac++;
 		} else {
 			this.iprac = 64;
 		}

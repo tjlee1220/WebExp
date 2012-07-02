@@ -111,7 +111,7 @@ a:hover {
 		  <!--Future Part Starts --> 
 		  <!--Future Part Ends --></p> 
 	</div> 
-	<!--Future Plans Contant Part Ends --> 
+	<!--Future Plans Content Part Ends --> 
 </div> 
 <!--Footer Part Starts --> 
 <div id="footer-bg"> 

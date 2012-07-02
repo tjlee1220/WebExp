@@ -59,6 +59,7 @@ class Task {
 	function endTask()
 	{
 		//do stuff
+		$
 		$this->mark_complete();
 		$data['code']=$this->generateCode();
 		$CI=&get_instance();

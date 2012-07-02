@@ -33,6 +33,10 @@ class Task {
 			//echo "subject has already started this task it is no longer accessible";
 			//exit();
 		}
+		if ($taskDone = 1) {
+			echo "subject has already started this task it is no longer accessible";
+			exit();
+		}
 		$task=$CI->session->userdata('task');		
 		if($CI->session->userdata('ind')<count($task['blocks'])) {
 			
@@ -59,6 +63,7 @@ class Task {
 	function endTask()
 	{
 		//do stuff
+		$
 		$this->mark_complete();
 		$data['code']=$this->generateCode();
 		$CI=&get_instance();

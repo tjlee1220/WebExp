@@ -19,7 +19,8 @@ class Subjects_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN
 					$data=array(
 						'id'=>$r->id,
 						'md5'=>$r->md5_identifier,
-						'task'=>$r->assigned_task
+						'task'=>$r->assigned_task,
+						'taskDone'=>$r->taskDone
 						);
 				}
 				//returns id, md5, and task associated with the md5 passed in the function 

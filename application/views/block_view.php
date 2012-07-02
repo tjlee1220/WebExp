@@ -4,13 +4,19 @@
 <script type="text/javascript" src="/webexp/js/<?php echo $js_file;?>"></script>
 <script type="text/javascript" src="/webexp/js/<?php echo $prac_js;?>"></script>
 <script type="text/javascript" src="/webexp/js/json2"></script>
+<style type ="text/css">
+#instructions {
+	font-family: helvetica;
+	font-size: 18;
+}
+</style>
 </head>
 <body>
-<div id="instructions" align="center"><font size="20" face="arial" color="black"> <?php echo($instructions);?> </font>
+<div id="instructions" align="center"> <?php echo($instructions);?> 
 <!--If practice is turned on '1', then practice trial must be completed in order to show the main task button-->
 <!--If practice is turned off '0', then the main task button will show up right away-->
 </br><button name="start_trials" id="start_trials" align="center" style="<?php if($practice==1) {echo 'display: none';}; ?>" ><font size="10" face="arial" color="black">Begin Main Task</font></button>
-<button name="start_prac" id="start_prac" align="center" style="<?php if($practice==0) {echo 'display: none';}; ?>" ><font size="10" face="arial" color="black">I understand</font></button></div>
+<button name="start_prac" id="start_prac" align="center" style="<?php if($practice==0) {echo 'display: none';}; ?>" ><font size="10" face="arial" color="black">I Understand</font></button></div>
 <div id="practice" style="display : none" align="center"><font size="20" face="arial" color="black"> PRACTICE TRIAL </font></div>
 <div id="start" style="display : none" align="center"><font size="20" face="arial" color="black"> STARTING TRIALS </font></div>
 <div style="margin-top: 150px;"><table width="100%" align="center">
@@ -54,7 +60,7 @@
 	$('#start_prac').click(function(){
 		$('#instructions').hide();
 		$('#practice').show();
-		trial_prac(<?php echo 48 . ',' . $valid_responses . ',' . 4000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to practice js file
+		trial_prac(<?php echo 48 . ',' . $valid_responses . ',' . 2000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to practice js file
 	});
 	//After the practice trial, run the main trial
 	$('#start_trials').click(function(){

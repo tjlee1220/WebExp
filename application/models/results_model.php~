@@ -1,6 +1,5 @@
 <?php
 
-//This is atest comment
 //Deals with taking results settings from database
 //Also deals with adding block results to the database
 class Results_Model extends CI_Model {
@@ -63,7 +62,8 @@ class Results_Model extends CI_Model {
 						'key_pressed'			=>$res->actualkey,
 						'stim_loc'				=>$res->selected,
 						'feedback'				=>$res->correct,
-						'reaction_time'		=>$res->rt
+						'reaction_time'		=>$res->rt,
+						'subject'            =>$md5
 						);
 		}
 		return $this->db->insert_batch('results', $data); 

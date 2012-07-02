@@ -264,8 +264,8 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 		// Checks number of wrong responses during the practice trial
 		// If the number of wrong responses is too high, return false and repeat practice
 		// Number of allowed incorrect responses is too; easily changed
-		if (this.numWrong > 8) {
-			alert("You provided more than 8 incorrect responses.\n Please repeat the practice again to ensure you understand the task.");
+		if (this.numWrong > 16) {
+			alert("You provided more than 16 incorrect responses.\n Please repeat the practice again to ensure you understand the task.");
 			return false;
 		}
 		else {

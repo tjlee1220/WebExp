@@ -26,6 +26,7 @@ class Task {
 		if($this->isLoaded()==FALSE)echo "Error: no task loaded";
 		
 		$CI =& get_instance();
+		$CI->load->model('subjects_model','sm');
 		$CI->load->library('subject');
 		//echo var_dump($CI->subject->verify_subjectbyid($CI->session->userdata('subject')));
 		if($CI->subject->verify_subjectbyid($CI->session->userdata('subject'))==-1)
@@ -33,7 +34,7 @@ class Task {
 			//echo "subject has already started this task it is no longer accessible";
 			//exit();
 		}
-		if ($taskDone = 1) {
+		if($CI->subject->check_progress($CI->sm->$taskDone)) {
 			echo "subject has already started this task it is no longer accessible";
 			exit();
 		}

@@ -90,7 +90,7 @@ a:hover {
             <td><div align="center" class="style26"> From the Laboratory of Neural Computation and Cognition </div></td> 
           </tr> 
           <tr> 
-            <td><div align="center" class="style27">Please Enter The Following Code to redeem your payment: </br> c4ca4238a0b923820dcc509a6f75849b
+            <td><div align="center" class="style27">Please Enter The Following Code to redeem your payment: </br> c4ca4238a0b923820dcc509a6f75849b  
             </div></td> 
           </tr> 
   </table> 

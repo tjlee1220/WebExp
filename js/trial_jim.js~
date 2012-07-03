@@ -30,14 +30,14 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		/*basic function for running trials - start trial is the primary driver for the experiments - */
 		$("#fixation").hide();
 		
-		this.i2++;		
+		this.i++;		
 		
-		/*if (this.i2<63) {
+		if (this.i2<63) {
 			this.i2++; //increments at beginning of next trial.
 		} else {
 			this.i2 = 0;
-		}*/		
-		if(this.i2<numstims)			//if iterator is less than the predefined number of trials.
+		}		
+		if(this.i<numstims)			//if iterator is less than the predefined number of trials.
 		{
 			 //document.getElementById('txt').innerHTML=i+"times left";
 

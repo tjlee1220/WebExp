@@ -123,7 +123,7 @@ By clicking I Understand, I affirm that I have read the information contained in
 		$('#start').show();
 		trial(<?php echo $numstims . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to main js file
 	});
-	//trial(<?php echo $numtrials . ',' . $valid_responses . ',' . $timeout ?>);
+	//trial(<?php echo $numstims . ',' . $valid_responses . ',' . $timeout ?>);
 	$(document).keypress(function(e){keypress(e);});
 </script>
 </body>

@@ -80,19 +80,19 @@ By clicking I Understand, I affirm that I have read the information contained in
 	<td id="cell_<?php echo($i . "_" . $key);?>"><div align="center" ><img src="/webexp/img/<?php echo($t['img']);?>"  alt="<?php echo($t['img']);?>" width="200" height="200" /></div></td>
 	<?php endforeach; ?></tr>
 	<?php endforeach; ?>
-	<tr id="row_64" value="[0,2]" trialno="336" style="display : none">
+	<tr id="row_64" value="[0,2]" trialno="" style="display : none">
 		<td id="cell_64_0"><div align="center" ><img src="/webexp/img/CC/blue_triangle.png"  alt="CC/blue_triangle.png" width="200" height="200" /></div></td>
 		<td id="cell_64_1"><div align="center" ><img src="/webexp/img/blank.png" alt="blank.png" width="200" height="200" /></div></td>
 	</tr> 
-	<tr id="row_65" value="[2,0]" trialno="383" style="display : none">
+	<tr id="row_65" value="[2,0]" trialno="" style="display : none">
 		<td id="cell_65_0"><div align="center" ><img src="/webexp/img/blank.png" alt="blank.png" width="200" height="200" /></div></td>
 		<td id="cell_65_1"><div align="center" ><img src="/webexp/img/CC/yellow_hex.png" alt="CC/yellow_hex.png" width="200" height="200" /></div></td>
 	</tr>
-	<tr id="row_66" value="[0,1]" trialno="324"  style="display : none">
+	<tr id="row_66" value="[0,1]" trialno=""  style="display : none">
 		<td id="cell_66_0"><div align="center" ><img src="/webexp/img/blank.png"  alt="blank.png" width="200" height="200" /></div></td>
 		<td id="cell_66_1"><div align="center" ><img src="/webexp/img/CC/blue_triangle.png"  alt="CC/blue_triangle.png" width="200" height="200" /></div></td>
 	</tr> 
-	<tr id="row_67" value="[2,0]" trialno="376"  style="display : none">
+	<tr id="row_67" value="[2,0]" trialno=""  style="display : none">
 		<td id="cell_67_0"><div align="center" ><img src="/webexp/img/CC/yellow_hex.png" alt="CC/yellow_hex.png" width="200" height="200" /></div></td>
 		<td id="cell_67_1"><div align="center" ><img src="/webexp/img/blank.png"  alt="blank.png" width="200" height="200" /></div></td>
 	</tr>
@@ -114,7 +114,7 @@ By clicking I Understand, I affirm that I have read the information contained in
 	$('#start_prac').click(function(){
 		$('#instructions').hide();
 		$('#practice').show();
-		trial_prac(<?php echo 48 . ',' . $valid_responses . ',' . 2000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to practice js file
+		trial_prac(<?php echo 47 . ',' . $valid_responses . ',' . 2000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to practice js file
 	});
 	//After the practice trial, run the main trial
 	$('#start_trials').click(function(){

@@ -8,6 +8,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	this.numRight = 0;			//Records number of correct responses
 	this.accuracy;					//Variable will be used later on to hold accuracy of subject
 	this.i=-1; //index of current trial
+	this.i2=-1;
 	this.res=new Array();
 	$(document).ready(function(){
 		//$('#subject').val(prompt("Please Enter Your Subject Number",0));		
@@ -28,16 +29,22 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	{
 		/*basic function for running trials - start trial is the primary driver for the experiments - */
 		$("#fixation").hide();
-		this.i++; //increments at beginning of next trial.
-			
+		
+		this.i++;		
+		
+		if (this.i2<63) {
+			this.i2++; //increments at beginning of next trial.
+		} else {
+			this.i2 = 0;
+		}		
 		if(this.i<numstims)			//if iterator is less than the predefined number of trials.
 		{
 			 //document.getElementById('txt').innerHTML=i+"times left";
-			 
+
 			 //var r=trialorder[i];
 			 //divid = "divids"+r;
 			 //toggle();
-			 $("#row_"+this.i).toggle();									//toggles any element with the id of the iterator. Idea being all elements start off hidden and are unhidden one at a time.
+			 $("#row_"+this.i2).toggle();									//toggles any element with the id of the iterator. Idea being all elements start off hidden and are unhidden one at a time.
 			 this.timer=1;													//timer is on once the image is shown. allows for keypresses to be collected
 			 this.rt_start = new Date().getTime();					//stores current time
 			 this.timeout=setTimeout("tooSlow()",time);			//callback to tooSlow after the number of milliseconds indicated. 
@@ -58,7 +65,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			 //var r=trialorder[i];
 			 //divid = "divids"+r;
 			 //toggle();
-			 $("#row_"+this.i).toggle();									//toggles any element with the id of the iterator. Idea being all elements start off hidden and are unhidden one at a time.
+			 $("#row_"+this.i2).toggle();									//toggles any element with the id of the iterator. Idea being all elements start off hidden and are unhidden one at a time.
 			 this.timer=1;													//timer is on once the image is shown. allows for keypresses to be collected
 			 this.rt_start = new Date().getTime();					//stores current time
 			 this.timeout=setTimeout("tooSlow()",time);			//callback to tooSlow after the number of milliseconds indicated. 
@@ -73,9 +80,9 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		this.timer=0;
 		alert("Too Slow! Make sure you click back on the main screen after closing this otherwise it will not register keyboard clicks");
 		//responses=responses+"nr, nr, ";
-		$("#row_"+this.i).toggle();
+		$("#row_"+this.i2).toggle();
 		//setTimeout("newTrial()",1000);
-		var y=document.getElementById("row_" + this.i).getAttribute("trialno");
+		var y=document.getElementById("row_" + this.i2).getAttribute("trialno");
 		this.res.push(new result(y,'no response',-1,-1,-1));
 		$("#fixation").show();
 		this.next_trial=setTimeout("repeatTrial()",fixation);
@@ -89,8 +96,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			alert(ind + " : " + val.key + " = > " + val.rt + "ms");
 		}); */
 		//alert(JSON.stringify(this.res)$('#json_res').val(JSON.stringify(this.res)););
-		
-		this.accuracy = calcAccuracy(this.numWrong);	//calculates accuracy of the subject and store it in a variable	
+			
 		
 		$('#json_res').val(JSON.stringify(this.res));
 		document.myform.submit();
@@ -98,12 +104,12 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	
 	this.is_correct=function(selected)
 	{
-		var x=document.getElementById("row_" + this.i).getAttribute("value");
+		var x=document.getElementById("row_" + this.i2).getAttribute("value");
 		x=eval(x);
 		//var y=document.getElementById("row_" + this.i).getAttribute("trialno");
 		//alert(x + '<br>' + selected + "<br>" + "Checking if " + x[selected] + "= 1");
 		//alert("Completed Trial no: " + y);
-		var td=$("#cell_"+ this.i + "_" + selected).parent().find('img[alt!="blank.png"]').parent().parent();
+		var td=$("#cell_"+ this.i2 + "_" + selected).parent().find('img[alt!="blank.png"]').parent().parent();
 		if(x[selected]==1)
 		{
 			//$("#positive_feedback").toggle();
@@ -155,10 +161,10 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	//clears the page in preparation for next stimuli 
 	this.clear = function(repeat)
 	{
-		var td=$("td[id^='cell_"+this.i +"']").parent().find('img[alt!="blank.png"]').parent().parent();
+		var td=$("td[id^='cell_"+this.i2 +"']").parent().find('img[alt!="blank.png"]').parent().parent();
 		td.attr('bgColor','#FFFFFF');
 		td.find('div[name="feedback"]').remove();
-		$("#row_"+this.i).toggle();
+		$("#row_"+this.i2).toggle();
 		$("#fixation").show();
 		if(!repeat) var repeat=false;
 		if (repeat==false)	setTimeout('startTrial()',fixation);
@@ -206,7 +212,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			clearTimeout(this.next_trial);
 			var res = actualkey;
 			var iscorrect=is_correct(selected);
-			var y=document.getElementById("row_" + this.i).getAttribute("trialno");
+			var y=document.getElementById("row_" + this.i2).getAttribute("trialno");
 			this.res.push(new result(y,res,selected,iscorrect,rt_trial));
 			
 			//$("#row_"+this.i).toggle();
@@ -246,11 +252,6 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	
 	}*/
 	
-	this.calcAccuracy = function(numWrong) {
-		//calculate the accuracy of the subject		
-		return ((numstims-numWrong)/numstims)*100;
-			
-	}
 }
 function result(ind,key,selected,correct,rt){
 	this.trialid=ind;

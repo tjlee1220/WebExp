@@ -18,10 +18,11 @@ class Result_Handler extends CI_Controller {
 				
 				$results = json_decode($this->input->post('json_res'));
 				$subject = $this->input->post('subject');
+				$trial_type = $this->input->post('trial_type');
 				//$this->load->model('subjects_model','sm');
 				//$md5 = $this->sm->getSubjectByMd 
 				$this->load->model('results_model','rm');
-				$res=$this->rm->save_results($results,$block_set_id);
+				$res=$this->rm->save_results($results,$block_set_id,$subject,$trial_type);
 				
 				
 				

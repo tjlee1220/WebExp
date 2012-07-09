@@ -105,7 +105,8 @@ By clicking I Understand, I affirm that I have read the information contained in
 
 <form action="/webexp/index.php/result_handler/submit" name="myform" method="post">
 	<input type="hidden" name="json_res" id="json_res" value="">
-	<!--<input type="hidden" name="subject" id="subject" value="">-->
+	<input type="hidden" name="subject" id="subject" value="">
+	<input type="hidden" name="trial_type" id="trial_type" value="<? echo $trial_type ?>">
 	<input type="hidden" name="verify"	value="1">
 </form>
 
@@ -114,17 +115,18 @@ By clicking I Understand, I affirm that I have read the information contained in
 	$('#start_prac').click(function(){
 		$('#instructions').hide();
 		$('#practice').show();
-		trial_prac(<?php echo 47 . ',' . $valid_responses . ',' . 2000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to practice js file
+		trial_prac(<?php echo 1 . ',' . $valid_responses . ',' . 2000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to practice js file
 	});
 	//After the practice trial, run the main trial
 	$('#start_trials').click(function(){
 		$('#instructions').hide();
 		$('#start_trials').remove();
 		$('#start').show();
-		trial(<?php echo $numstims . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to main js file
+		trial(<?php echo 5 . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to main js file
 	});
 	//trial(<?php echo $numstims . ',' . $valid_responses . ',' . $timeout ?>);
 	$(document).keypress(function(e){keypress(e);});
 </script>
+
 </body>
 </html>

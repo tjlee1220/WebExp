@@ -50,18 +50,21 @@ class Results_Model extends CI_Model {
 		return $this->db->insert_id();
 	}
 	
-	function save_results($results_array,$block_set_id)	
+	function save_results($results_array,$block_set_id,$subject,$trial_type)	
 	{
 		$data=array();
 		foreach($results_array as $key=>$res)
 		{
 			$data[]=array(
+						'subject'            =>$subject,
 						'block_set_id'			=>$block_set_id,	//make this dynamic too
 						'trial_id'				=>$res->trialid,
-						'order_presented'		=>$key+1,
+						'trial_number_per_block'		=>$key+1,
 						'key_pressed'			=>$res->actualkey,
 						'stim_loc'				=>$res->selected,
 						'feedback'				=>$res->correct,
+						'accuracy'           =>$res->accuracy,
+						'trial_type'         =>$trial_type,
 						'reaction_time'		=>$res->rt
 						);
 		}

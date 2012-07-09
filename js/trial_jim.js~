@@ -6,12 +6,11 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	this.next_trial;
 	this.numWrong = 0;         //Records number of incorrect responses
 	this.numRight = 0;			//Records number of correct responses
-	this.accuracy;					//Variable will be used later on to hold accuracy of subject
 	this.i=-1; //index of current trial
 	this.i2=-1;
 	this.res=new Array();
 	$(document).ready(function(){
-		//$('#subject').val(prompt("Please Enter Your Subject Number",0));		
+		 //$('#subject').val(prompt("Please Enter Your Subject Number",0));		
 		//alert('Starting Trials');
 		setTimeout('begin()', 1000);
 	});
@@ -21,6 +20,8 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	this.begin = function()
 	{
 		$('#start').hide();
+		this.subjNum = prompt("Please Enter the Subject Number Given To You On AMT: ");
+		myform.subject.value = this.subjNum;
 		$('#fixation').show();
 		setTimeout("startTrial()", fixation);
 	}
@@ -212,8 +213,15 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			clearTimeout(this.next_trial);
 			var res = actualkey;
 			var iscorrect=is_correct(selected);
+			if (iscorrect == 1 || iscorrect == 2) {
+				var accuracy = 1; 	
+			} else if (iscorrect == 0) {
+				var accuracy = 0;
+			} else {
+				var accuracy = 2;
+			}
 			var y=document.getElementById("row_" + this.i2).getAttribute("trialno");
-			this.res.push(new result(y,res,selected,iscorrect,rt_trial));
+			this.res.push(new result(y,res,selected,iscorrect,rt_trial,accuracy));
 			
 			//$("#row_"+this.i).toggle();
 			//feedback and result function goes here
@@ -253,10 +261,11 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	}*/
 	
 }
-function result(ind,key,selected,correct,rt){
+function result(ind,key,selected,correct,rt,accuracy){
 	this.trialid=ind;
 	this.actualkey=key;
 	this.selected=selected;
 	this.correct=correct;
 	this.rt=rt;
+	this.accuracy=accuracy;
 	}

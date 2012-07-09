@@ -21,7 +21,7 @@ class Task {
 		//return $CI->tm->getTask($tid);	
 	}
 	
-	function run_next()
+	function run_next($md5)
 	{
 		if($this->isLoaded()==FALSE)echo "Error: no task loaded";
 		

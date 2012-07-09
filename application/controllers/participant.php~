@@ -8,10 +8,6 @@ class Participant extends CI_Controller {
 		$this->load->library('subject'); //loads subject library
 		$subject=$this->subject->verify_subject($md5); //Verifies that md5 passed is a valid subject number
 		//echo var_dump($subject);
-		if ($taskDone == 1) {
-			echo "subject has already started this task it is no longer accessible";
-			exit();
-		}
 		if($subject==0){
 			 echo "invalid subject number";
 			 return false;
@@ -27,13 +23,13 @@ class Participant extends CI_Controller {
 			$this->subject->load_result_set($set_id);**/
 			//load instructions
 			$this->load->library('task');
-			$this->task->run_next();
+			$this->task->run_next($md5);
 		}
 	}
-	function run_next()
+	function run_next($md5)
 	{
 		$this->load->library('task');
-		$this->task->run_next();
+		$this->task->run_next($md5);
 	}
 
 

@@ -7,8 +7,7 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 	this.next_trial;
 	this.i=-1; //index of current trial
 	this.numWrong = 0;         //Records number of incorrect responses
-	this.numRight = 0;			//Records number of correct responses
-	this.accuracy;	 				
+	this.numRight = 0;			//Records number of correct responses			
 	this.iprac = 63;
 	this.res=new Array();
 	$(document).ready(function(){

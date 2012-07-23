@@ -17,6 +17,7 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 			{
 				$t=array(
 						'id' => $r->id,
+						'trial_id' => $r->trial_id,
 						'stims' => unserialize($r->stims),
 						'correct' => unserialize($r->correct)
 						);

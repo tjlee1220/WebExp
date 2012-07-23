@@ -17,6 +17,7 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 			{
 				$t=array(
 						'id' => $r->id,
+						'trial_id' => $r->trial_id,
 						'stims' => unserialize($r->stims),
 						'correct' => unserialize($r->correct)
 						);
@@ -149,6 +150,7 @@ class Trials_Model extends CI_Model {				//@TODO FUNCTIONS BELOW SHOULD RETURN F
 					'positive_img'=>$r->positive_img,
 					'negative_img'=>$r->negative_img,
 					'neutral_img'=>$r->neutral_img,
+					'trial_type'=>$r->trial_type,
 					'practice'=>$r->practice //Added to facilitate the optional practice feature; 1 if on, 0 if off
 					);
 			}

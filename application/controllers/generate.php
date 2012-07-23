@@ -227,7 +227,7 @@ class Generate extends CI_Controller {
 					
 					$res=$this->generateCorrectCC($stim,false);
 					
-					for($i=0; $i<4; $i++)		//generates trials with stim on left
+					for($i=0; $i<4; $i++)		//generates trials with stim on right
 					{
 						$r=array(
 						'block_id' => $bid,

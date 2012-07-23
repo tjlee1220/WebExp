@@ -63,9 +63,10 @@ class Results_Model extends CI_Model {
 						'key_pressed'			=>$res->actualkey,
 						'stim_loc'				=>$res->selected,
 						'feedback'				=>$res->correct,
-						'accuracy'           =>$res->
-						'trial_type'         =>$trial_type,
-						'reaction_time'		=>$res->rt
+						if (isset($res->accuracy)) {
+						'accuracy'           =>$res->accuracy},
+						'reaction_time'		=>$res->rt,
+						'trial_type'         =>$trial_type
 						);
 		}
 		return $this->db->insert_batch('results', $data); 

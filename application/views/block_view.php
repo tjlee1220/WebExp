@@ -1,9 +1,9 @@
 <html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml"><head>
-<title><?php echo $name;?></title>
-<script type="text/javascript" src="/webexp/js/jquery-1.6.1.min"></script>
-<script type="text/javascript" src="/webexp/js/<?php echo $js_file;?>"></script>
-<script type="text/javascript" src="/webexp/js/<?php echo $prac_js;?>"></script>
-<script type="text/javascript" src="/webexp/js/json2"></script>
+<title><?php echo $name; ?></title>
+<script type="text/javascript" src="/webexp/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="/webexp/js/<?php echo $js_file;?>.js"></script>
+<script type="text/javascript" src="/webexp/js/<?php echo $prac_js;?>.js"></script>
+<script type="text/javascript" src="/webexp/js/json2.js"></script>
 <style type ="text/css">
 #instructions {
 	font-family: helvetica;
@@ -115,14 +115,14 @@ By clicking I Understand, I affirm that I have read the information contained in
 	$('#start_prac').click(function(){
 		$('#instructions').hide();
 		$('#practice').show();
-		trial_prac(<?php echo 48 . ',' . $valid_responses . ',' . 2000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to practice js file
+		trial_prac(<?php echo 1 . ',' . $valid_responses . ',' . 2000 . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to practice js file
 	});
 	//After the practice trial, run the main trial
 	$('#start_trials').click(function(){
 		$('#instructions').hide();
 		$('#start_trials').remove();
 		$('#start').show();
-		trial(<?php echo $numstims . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to main js file
+		trial(<?php echo 10 . ',' . $valid_responses . ',' . $timeout . ',' . $fb_time . ',' . $fixation ?>); //Sends trial information to main js file
 	});
 	//trial(<?php echo $numstims . ',' . $valid_responses . ',' . $timeout ?>);
 	$(document).keypress(function(e){keypress(e);});

@@ -63,7 +63,6 @@ class Results_Model extends CI_Model {
 						'key_pressed'			=>$res->actualkey,
 						'stim_loc'				=>$res->selected,
 						'feedback'				=>$res->correct,
-						'accuracy'           =>$res->accuracy,
 						'reaction_time'		=>$res->rt,
 						'trial_type'         =>$trial_type
 						);

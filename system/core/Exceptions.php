@@ -169,9 +169,8 @@ class CI_Exceptions {
 		ob_end_clean();
 		echo $buffer;
 	}
-
-
 }
+?>
 // END Exceptions Class
 
 /* End of file Exceptions.php */

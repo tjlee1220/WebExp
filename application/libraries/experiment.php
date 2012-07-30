@@ -27,7 +27,7 @@ class Experiment {
 			else $is_grouped=false;
 		}
 		
-		$rules=$this->get_image_rules($exp_id,$rand,$is_grouped);		//is grouped is a binary flag to denote grouped stimuli
+		$rules=$this->get_image_rules($exp_id,$rand,false);		//is grouped is a binary flag to denote grouped stimuli
 		
 		$exp[$exp_id]=array(
 								'stim_pairs'=>$rules,

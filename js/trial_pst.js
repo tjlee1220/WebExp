@@ -4,9 +4,6 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	this.timeout;					//timeout timer
 	this.next_trial;
 	this.i=-1; //index of current trial
-	this.numRight = 0;
-	this.numWrong = 0;
-	this.accuracy;
 	this.res=new Array();
 	$(document).ready(function(){
 		//$('#subject').val(prompt("Please Enter Your Subject Number",0));		
@@ -16,7 +13,9 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		
 		this.begin = function() {
 			$('#start').hide();
-			alert("The trial is about to begin");
+			//alert("The trial is about to begin");
+			this.subjNum = prompt("Please Enter the Subject Number Given To You On AMT: ");
+		   myform.subject.value = this.subjNum;
 			setTimeout("startTrial()");
 		}
 	
@@ -39,17 +38,8 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			 //this.next_trial=setTimeout("startTrial()",5000);	//the maximum amount of time allotted to each trial. @TODO This could be replaced by adding a setTimeout in tooSlow
 			 
 		} 
-		else
-		{
-			this.acc = calcAccuracy(this.numWrong);
-			if (this.acc < 80 ) {
-				alert("You're accuracy was not enough!")
-				this.numWrong = 0;
-				this.numRight = 0;
-				begin();
-			} else {
-		 		endExp();
-			}		
+		else {
+			endExp();		
 		}
 	}
 	
@@ -90,7 +80,6 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			//alert('Correct');
 			$("#positive_feedback").toggle();
 			setTimeout('$("#positive_feedback").toggle()',500);
-			this.numRight++;
 			return 1;
 		}
 		else if(x[selected]==0)
@@ -193,10 +182,6 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	
 	}*/
 	
-	this.calcAccuracy = function(numWrong) {
-		//calculate the accuracy of the subject		
-		return ((numstims-numWrong)/numstims)*100;			
-	}
 }
 function result(ind,key,selected,correct,rt){
 	this.trialid=ind;

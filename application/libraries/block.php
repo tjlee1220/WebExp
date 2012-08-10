@@ -21,7 +21,7 @@ class Block {
 
 	function get_view_data($block,$shuffle=true)
 	{
-		$data=$this->get_settings($block,true);		//binary flag uses a json encode on the valid responses array to make it passable to the javascript
+		$data=$this->get_settings($block,true);		//binary flag uses a json encode on the valid responses array to make it passable to the JavaScript
 		$CI =& get_instance();
 		$CI->load->library('experiment');		
 		
@@ -33,7 +33,7 @@ class Block {
 		
 		
 		$rules=$CI->experiment->load_image_rules($data['exp_id']);		//loads image replacement rules based on stimulus id parameters are experiment id and 
-																				//randomization. set 2nd parameter to true in order to randomize stimulus asscociations
+																				//randomization. set 2nd parameter to true in order to randomize stimulus associations
 		//unset($data['exp_id']);
 
 		foreach($trials as $row)
@@ -60,7 +60,7 @@ class Block {
 /*	
 		$block_id=3;
 		$this->load->library('block');
-		$data=$this->block->get_settings($block_id,true);  //binary flag uses a json encode on the valid responses array to make it passable to the javascript
+		$data=$this->block->get_settings($block_id,true);  //binary flag uses a json encode on the valid responses array to make it passable to the JavaScript
 		$exp_id=$data['exp_id'];
 		unset($data['exp_id']);
 		
@@ -69,7 +69,7 @@ class Block {
 		$data['numtrials']=count($t);
 		$this->load->library('experiment');
 		$rules=$this->experiment->load_image_rules(1,true);		//loads image replacement rules based on stimulus id parameters are experiment id and 
-																					//randomization. set 2nd parameter to true in order to randomize stimulus asscociations
+																					//randomization. set 2nd parameter to true in order to randomize stimulus associations
 		foreach($t as $row)
 		{
 			$trial=array();

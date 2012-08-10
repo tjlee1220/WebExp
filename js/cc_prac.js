@@ -271,9 +271,4 @@ function trial_prac(numstims,validkeys,time,fb_time,fixation){
 			return true;	
 		}
 	}
-	this.calcAccuracy = function(numWrong) {
-		//calculate the accuracy of the subject		
-		return ((numstims-numWrong)/10)*100;
-			
-	}
 }

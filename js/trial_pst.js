@@ -4,6 +4,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	this.timeout;					//timeout timer
 	this.next_trial;
 	this.i=-1; //index of current trial
+	this.numWrong = 0;
 	this.res=new Array();
 	$(document).ready(function(){
 		//$('#subject').val(prompt("Please Enter Your Subject Number",0));		
@@ -39,7 +40,7 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 			 
 		} 
 		else {
-			endExp();		
+			endExp();
 		}
 	}
 	
@@ -57,15 +58,14 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 		this.next_trial=setTimeout("startTrial()",500);
 	}
 	
-	this.endExp = function()
-	{
-		//alert(this.res);
-		/*$.each(this.res, function(ind,val){
-			alert(ind + " : " + val.key + " = > " + val.rt + "ms");
-		}); */
-		//alert(JSON.stringify(this.res)$('#json_res').val(JSON.stringify(this.res)););
-		$('#json_res').val(JSON.stringify(this.res));
-		document.myform.submit();
+	this.endExp = function() {
+					//alert(this.res);
+					/*$.each(this.res, function(ind,val){
+					alert(ind + " : " + val.key + " = > " + val.rt + "ms");
+					}); */
+					//alert(JSON.stringify(this.res)$('#json_res').val(JSON.stringify(this.res)););
+					$('#json_res').val(JSON.stringify(this.res));
+					document.myform.submit();
 	}
 	
 	this.is_correct=function(selected)
@@ -180,6 +180,14 @@ function trial(numstims,validkeys,time,fb_time,fixation){
 	}
 	
 	
+	}*/
+	
+	/*this.repeat = function(numWrong) {
+		if (numWrong > 0) {
+			return true;	
+		} else {
+			return false;	
+		}
 	}*/
 	
 }

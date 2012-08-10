@@ -1,0 +1,253 @@
+function trial(numstims,validkeys,time,fb_time,fixation){
+this.timer=0;	//bool variable for whether or not this.timer is on. 0 - Off , 1- On
+this.rt_start;	//stores the current time at the beginning of each trial. Global because needs to be accessed by keypress function
+this.timeout;	//timeout timer
+this.next_trial;
+this.numWrong = 0; //Records number of incorrect responses
+this.numRight = 0;	//Records number of correct responses
+this.i=-1; //index of current trial
+this.i2=-1;
+this.res=new Array();
+$(document).ready(function(){
+//$('#subject').val(prompt("Please Enter Your Subject Number",0));
+//alert('Starting Trials');
+setTimeout('begin()', 1000);
+});
+
+//setup the page to begin practice task
+//Show fixation cross, run startTrial()
+this.begin = function()
+{
+$('#start').hide();
+this.subjNum = prompt("Please Enter the Subject Number Given To You On AMT: ");
+myform.subject.value = this.subjNum;
+$('#fixation').show();
+setTimeout("startTrial()", fixation);
+}
+
+this.startTrial = function()
+{
+/*basic function for running trials - start trial is the primary driver for the experiments - */
+$("#fixation").hide();
+
+this.i++;	
+
+if (this.i2<63) {
+this.i2++; //increments at beginning of next trial.
+} else {
+this.i2 = 0;
+}	
+if(this.i<numstims)	//if iterator is less than the predefined number of trials.
+{
+//document.getElementById('txt').innerHTML=i+"times left";
+
+//var r=trialorder[i];
+//divid = "divids"+r;
+//toggle();
+$("#row_"+this.i2).toggle();	//toggles any element with the id of the iterator. Idea being all elements start off hidden and are unhidden one at a time.
+this.timer=1;	//timer is on once the image is shown. allows for keypresses to be collected
+this.rt_start = new Date().getTime();	//stores current time
+this.timeout=setTimeout("tooSlow()",time);	//callback to tooSlow after the number of milliseconds indicated.
+//this.next_trial=setTimeout("startTrial()",5000); //the maximum amount of time allotted to each trial. @TODO This could be replaced by adding a setTimeout in tooSlow
+
+}
+else
+{
+endExp();
+}
+}
+
+this.repeatTrial=function()
+{
+//document.getElementById('txt').innerHTML=i+"times left";
+
+$("#fixation").hide();
+//var r=trialorder[i];
+//divid = "divids"+r;
+//toggle();
+$("#row_"+this.i2).toggle();	//toggles any element with the id of the iterator. Idea being all elements start off hidden and are unhidden one at a time.
+this.timer=1;	//timer is on once the image is shown. allows for keypresses to be collected
+this.rt_start = new Date().getTime();	//stores current time
+this.timeout=setTimeout("tooSlow()",time);	//callback to tooSlow after the number of milliseconds indicated.
+//this.next_trial=setTimeout("startTrial()",5000); //the maximum amount of time allotted to each trial. @TODO This could be replaced by adding a setTimeout in tooSlow
+}	
+
+
+this.tooSlow = function()
+{
+//this.timer for trials
+//document.getElementById('txt3').innerHTML="Too Slow!";
+this.timer=0;
+alert("Too Slow! Make sure you click back on the main screen after closing this otherwise it will not register keyboard clicks");
+//responses=responses+"nr, nr, ";
+$("#row_"+this.i2).toggle();
+//setTimeout("newTrial()",1000);
+var y=document.getElementById("row_" + this.i2).getAttribute("trialno");
+this.res.push(new result(y,'no response',-1,-1,-1));
+$("#fixation").show();
+this.next_trial=setTimeout("repeatTrial()",fixation);
+}
+
+//When the predetermined number of trials is reached; end trial and send results to /webexp/index.php/result_handler/submit
+this.endExp = function()
+{
+//alert(this.res);
+/*$.each(this.res, function(ind,val){
+alert(ind + " : " + val.key + " = > " + val.rt + "ms");
+}); */
+//alert(JSON.stringify(this.res)$('#json_res').val(JSON.stringify(this.res)););
+
+
+$('#json_res').val(JSON.stringify(this.res));
+document.myform.submit();
+}
+
+this.is_correct=function(selected)
+{
+var x=document.getElementById("row_" + this.i2).getAttribute("value");
+x=eval(x);
+//var y=document.getElementById("row_" + this.i).getAttribute("trialno");
+//alert(x + '<br>' + selected + "<br>" + "Checking if " + x[selected] + "= 1");
+//alert("Completed Trial no: " + y);
+var td=$("#cell_"+ this.i2 + "_" + selected).parent().find('img[alt!="blank.png"]').parent().parent();
+if(x[selected]==1)
+{
+//$("#positive_feedback").toggle();
+var div=$('#positive_feedback_div')
+
+//$("#cell_"+ this.i + "_" + selected).parent().find('img[alt!="blank.png"]').parent().parent().attr('bgColor','#00FF00');
+td.attr('bgColor', '#00FF00');
+//div.unhide()
+//td.append(div);
+div.clone().appendTo(td);
+setTimeout('clear()',fb_time);
+return 1;
+}
+else if(x[selected]==0)
+{
+//$("#negative_feedback").toggle();
+//$("#cell_"+ this.i + "_" + selected).parent().find('img[alt!="blank.png"]').parent().parent().attr('bgColor','#FF0000');
+var div=$('#negative_feedback_div')
+td.attr('bgColor','#FF0000');
+//td.append(div);
+div.clone().appendTo(td);
+setTimeout('clear(true)',fb_time);
+return 0;
+}
+else if(x[selected]==2)
+{	
+//neutral feedback
+//$("#neutral_feedback").toggle();
+var div=$('#neutral_feedback_div')
+//$("#cell_"+ this.i + "_" + selected).parent().find('img[alt!="blank.png"]').parent().parent().attr('bgColor','#0000FF');
+td.attr('bgColor','#6D7B8D');
+//td.append(div);
+div.clone().appendTo(td);
+setTimeout('clear()',fb_time);
+return 2;
+}
+else if(x[selected]==3)
+{
+//nofeedback
+clear();
+return 3;
+}
+
+}
+
+//clears the page in preparation for next stimuli
+this.clear = function(repeat)
+{
+var td=$("td[id^='cell_"+this.i2 +"']").parent().find('img[alt!="blank.png"]').parent().parent();
+td.attr('bgColor','#FFFFFF');
+td.find('div[name="feedback"]').remove();
+$("#row_"+this.i2).toggle();
+$("#fixation").show();
+if(!repeat) var repeat=false;
+if (repeat==false)	setTimeout('startTrial()',fixation);
+else setTimeout('repeatTrial()',fixation);
+}
+
+//Deals with keys pressed
+//Makes sure that they key pressed is a valid key
+this.keypress = function(e){
+
+//function keyCatcher(e){
+var rt_trial=new Date().getTime() - this.rt_start;	//calculates reaction time immediately. dismisses if keypress is invalid.
+validkeys=eval(validkeys);	//@TODO need to make this array dynamic
+var evtobj=window.event? event : e; //distinguish between IE's explicit event object (window.event) and Firefox's implicit.
+var unicode=evtobj.charCode? evtobj.charCode : evtobj.keyCode;
+var actualkey=String.fromCharCode(unicode);
+var selected=$.inArray(actualkey,validkeys);	//returns index of selected answer
+
+if(this.timer==1 && selected!=-1) // and is in response key set *** HAVE TO ADD THIS***
+{
+/* sw var evtobj=window.event? event : e //distinguish between IE's explicit event object (window.event) and Firefox's implicit.
+var unicode=evtobj.charCode? evtobj.charCode : evtobj.keyCode
+var actualkey=String.fromCharCode(unicode)itch (String.fromCharCode(e.keyCode).toLowerCase())
+{
+case 'a':
+var rt_trial=new Date().getTime() - this.rt_start;
+this.timer = 0;
+$("#"+i).toggle();
+//feedback goes here feedback()
+break;
+case 's':
+var rt_trial=new Date().getTime() - this.rt_start;
+this.timer = 0;
+$("#"+i).toggle();
+//feedback goes here feedback()
+break;
+}*/
+//var res = String.fromCharCode(e.keyCode).toLowerCase();
+//var res = actualkey;
+
+this.timer=0;
+clearTimeout(this.timeout);
+clearTimeout(this.next_trial);
+var res = actualkey;
+var iscorrect=is_correct(selected);
+var y=document.getElementById("row_" + this.i2).getAttribute("trialno");
+this.res.push(new result(y,res,selected,iscorrect,rt_trial));
+
+//$("#row_"+this.i).toggle();
+//feedback and result function goes here
+
+}
+}
+
+
+/*if (actualkey=="g"&&i<=4){
+reactionTime2 = new Date().getTime() - reactionTime1;
+if(reactionTime2<4000){
+responses=responses+"g, ";
+responses=responses + reactionTime2 +", ";
+document.getElementById('txt').innerHTML="You pressed g";
+toggle();
+clearTimeout(a);
+clearTimeout(t);
+startPausing();
+}
+}
+if (actualkey=="h"&&i<=4){
+reactionTime2 = new Date().getTime() - reactionTime1;
+if(reactionTime2<4000){
+responses=responses+"h, ";
+responses=responses + reactionTime2 + ", ";
+document.getElementByIindex.php/result_handler/submitd('txt').innerHTML="You pressed h";
+toggle();
+clearTimeout(a);
+clearTimeout(t);
+startPausing();
+}
+}
+}*/
+
+}
+function result(ind,key,selected,correct,rt){
+this.trialid=ind;
+this.actualkey=key;
+this.selected=selected;
+this.correct=correct;
+this.rt=rt;
+}

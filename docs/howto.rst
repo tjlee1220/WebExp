@@ -36,7 +36,7 @@ pairs into your serialized array. Your finished product would look like this:
 
     a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}
 
-  The unserialized form of this array would look like this:
+The unserialized form of this array would look like this:
 
 ::
 

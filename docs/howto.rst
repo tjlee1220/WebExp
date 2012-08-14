@@ -185,9 +185,9 @@ integer value can be used to describe the trial can be found in the 'Results' Se
 
 ::		
 
-    The number '123' could represent a trial with a blue stimlus presented on the left side of the screen with a condition of 3. In this 
-    example, '1' could represent a blue stimulus, '2' could represent the left side, and '3' could represent the
-    trial's condition, which will be explained later on.
+    The number '123' could represent a trial with a blue stimlus presented on the left side of the screen
+    with a condition of 3. In this example, '1' could represent a blue stimulus, '2' could represent the
+    left side, and '3' could represent the trial's condition, which will be explained later on.
 
 The 'block_id' column holds the id number of the block that the trial is a part of.
 The 'stims' column contains a serialized php array (See 'Setting Up a new Task') that describes which stimuli will be

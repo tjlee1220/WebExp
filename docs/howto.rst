@@ -22,7 +22,9 @@ first key => value pair and looks like '0 => 4' in unserialized form. In all pro
 0 not 1. This means that the first value in this serialized array is 4. The second value in the array, 'i:1;i:5', is
 5. The values reprsent the id number of the block that the subject will be taken through. Meaning, that if a subject
 was assigned this demo task, they would first go through the block with an id of 4, then the block with an id of 5, 
-then the task would end. If you wanted to create a task in which the subject went through three blocks, with the
+then the task would end.
+
+If you wanted to create a task in which the subject went through three blocks, with the
 respective id numbers of 1, 2, and 3, then you would have to create your own array to insert into this 'blocks' 
 column. First, you would begin your array with: 
 

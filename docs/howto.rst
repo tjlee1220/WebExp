@@ -141,7 +141,7 @@ contains a variety of information that describes each block.
 
 * The *timestamp* column is automatically generated and gives the time and date of the block*s creation.
 
-* The *js_file* column provides the javascript file that is to be used for that specific block to govern any interactivity. The *prac_js" column has the same function except that it is used for the practice portion of that block instead of the main trial.
+* The *js_file* column provides the javascript file that is to be used for that specific block to govern any interactivity. The *prac_js* column has the same function except that it is used for the practice portion of that block instead of the main trial.
 
 * The *valid_responses* column contains a serialized php array (See *Setting up a new task*) that describes which keys are considered valid responses during the block. The default value for this column is:
 

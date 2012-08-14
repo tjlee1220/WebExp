@@ -4,7 +4,7 @@ How-To: WebExp
 Setting up a new Task
 ---------------------
 
-  A task is defined as a set of blocks that is assigned to a subject. Within the WebExp SQL database, the table for 
+A task is defined as a set of blocks that is assigned to a subject. Within the WebExp SQL database, the table for 
 tasks contains five columns. The first column is the Primary id, which keeps track of each individual entry into the table.
 The next column, 'blocks', contains the blocks that the subject will be taken through while participating in the task. 
 This is the most important column when it comes to creating a new task. The 'blocks' column contains a serialized php array 
@@ -15,7 +15,7 @@ new task, an example array will be used:
 
     a:2:{i:0;i:4;i:1;i:5;}
 
-  The 'a:2:' part of the string tells PHP, and the person reading it, that this string represents an array with two
+The 'a:2:' part of the string tells PHP, and the person reading it, that this string represents an array with two
 values. The serialized array is presented in key => value pairs. For example, in the demo array, 'i:0;i:4;' is the
 first key => value pair and looks like '0 => 4' in unserialized form. In all programming languages, arrays start with
 0 not 1. This means that the first value in this serialized array is 4. The second value in the array, 'i:1;i:5', is
@@ -29,7 +29,7 @@ column. First, you would begin your array with:
 	
     a:3:{}
 
-  This means that you are creating an array with three key => value pairs. Next, you would insert these key => 
+This means that you are creating an array with three key => value pairs. Next, you would insert these key => 
 pairs into your serialized array. Your finished product would look like this:
 
 ::
@@ -46,14 +46,14 @@ pairs into your serialized array. Your finished product would look like this:
       2 => 3,
     );
 
-  The next column is the 'name' column. This column is pretty self-explanatory and simply contains the name of the 
+The next column is the 'name' column. This column is pretty self-explanatory and simply contains the name of the 
 task. The next column is 'notes', which is optional, and can contain any notes on the task you would want to add.
 The final column is the timestamp column which automatically records the date and time at which the task was created.
 
 Blocks
 ------
 
-  Blocks are individual experiments that subjects participate in. A single block or multiple blocks make up a task
+Blocks are individual experiments that subjects participate in. A single block or multiple blocks make up a task
 which is then assigned to the subject (See "Setting Up a New Task"). The 'blocks' table contains a variety of
 information that describes each block. The first column is the Primary_id that SQL uses to keep track of every
 individual entry. The next column is 'exp_id' or experiment id which is linked to the 'experiments' table which
@@ -77,7 +77,7 @@ The default value for this column is:
 
     a:2:{i:0;s:1:"d";i:1;s:1:"k";}
 	
-  This particular array provides 'd' and 'k' as the two valid responses to a stimulus. The 'd' and 'k' keys
+This particular array provides 'd' and 'k' as the two valid responses to a stimulus. The 'd' and 'k' keys
 are there by default but can be substituted for any other set of keys. The 'trial_type' column can contain either 
 '1' or '2'. '1' means that the block is a training block and '2' means that the block is a test block. The final 
 'practice' column contains either '0' or '1'. '0' means that practice is turned off for that block and '1' means 
@@ -87,7 +87,7 @@ before starting the main trial. Be sure to provide a 'prac_js' file if practice 
 Results
 -------
 
-  The results table contains all the information on a subject's individual performance in a block. The first
+The results table contains all the information on a subject's individual performance in a block. The first
 column 'Overall Trial Number Across Block' is the SQL Primary_id which keeps track of each individual entry. Each
 entry in the table represents an individual trial, which is the presentation of a single stimulus or group of 
 stimuli to the subject. The next 'subject' column contains the subject number assigned to each subject through
@@ -113,7 +113,7 @@ column 'trial_type' is related to the 'trial_type' column from the 'blocks' tabl
 Exporting to CSV
 ----------------
 
-  PhpMyAdmin makes it very easy to export anything to csv format. The most common thing that you will export will most
+PhpMyAdmin makes it very easy to export anything to csv format. The most common thing that you will export will most
 likely be the results table but this same process works for any table. First, select the table that you want to export.
 Then, look for the 'Export' tab along the top of the page. Select this tab and you will be presented with a variety
 of options. You can export the data to a .csv file, an excel file, or many other file types. Once you have 
@@ -124,7 +124,7 @@ the data was exported correctly.
 Trials
 ------
 
-  The 'trials' table contains the description of each individual trial that has been generated for the blocks. A trial
+The 'trials' table contains the description of each individual trial that has been generated for the blocks. A trial
 is simply the presentation of a single stimulus or group of stimuli that the subject then responds to. The first 'trial_id'
 column is the Primary_id for the sql table, which keeps track of each entry. The next column 'id' contains an integer 
 value that describes the individual trial. A thorough explaination of how this integer value can be used to describe
@@ -136,7 +136,7 @@ the trial can be found in the 'Results' Section and will be quoted here:
     example, '1' could represent a blue stimulus, '2' could represent the left side, and '3' could represent the
     trial's condition, which will be explained later on.
 
-  The 'block_id' column holds the id number of the block that the trial is a part of. The 'stims' column contains a 
+The 'block_id' column holds the id number of the block that the trial is a part of. The 'stims' column contains a 
 serialized php array (See 'Setting Up a new Task') that describes which stimuli will be presented during that trial. The 'correct' column also
 contains a serialized php array that describes the feedback given by each stimulus in the trial. The 'condition' 
 column holds 1, 2, 3, 4, or 0. '1' denotes a trial that always provides positive feedback. '2' denotes a congruent 
@@ -151,7 +151,7 @@ Condition '0' is used for testing phases where no feedback is provided to the su
 Stimulus_Images
 ---------------
 
-  The 'stimulus_images' table contains all the information on the images used as stimuli in the blocks. The first column
+The 'stimulus_images' table contains all the information on the images used as stimuli in the blocks. The first column
 is the Primary_id which tracks each entry into the table. The next column is 'exp_id' which contains an integer to 
 associate each image with conditions defined in the 'experiments' table. These conditions include randomization and 
 preservation of stimulus mapping. The 'stim_id' column helps keep track of each image in its individual block. The 'img'

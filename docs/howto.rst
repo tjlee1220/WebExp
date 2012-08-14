@@ -2,7 +2,7 @@
 How-To: WebExp
 ==============
 
-Setting up a new Task
+Setting up a new task
 =====================
 
 A task is defined as a set of blocks that is assigned to a subject. Within the WebExp SQL database, the table for 
@@ -63,8 +63,8 @@ above to input a serialized php array that will govern which blocks the subject 
 Exporting to various formats
 ============================
 
-PhpMyAdmin makes it very easy to export anything to csv format. The most common thing that you will export will most
-likely be the results table but this same process works for any table. First, select the table that you want to export.
+PhpMyAdmin makes it very easy to export any data to a file. The most common thing that you will export will most
+likely be the results table, but this same process works for any table. First, select the table that you want to export.
 Then, look for the 'Export' tab along the top of the page. Select this tab and you will be presented with a variety
 of options. You can export the data to a .csv file, an excel file, or many other file types. Once you have 
 selected all the options you want, simply hit go and the file will be downloaded to your computer. 
@@ -72,7 +72,7 @@ selected all the options you want, simply hit go and the file will be downloaded
 Note that PhpMyAdmin has a memory limit on the amount of data it can export at a single time. Make sure to check the
 downloaded file to see if all the data was exported correctly.
 
-Generating new Subjects
+Generating new subjects
 =======================
 
 To create new subjects to participate in a task, you must visit the 'subjects' table. Within the subjects table, locate

@@ -137,9 +137,9 @@ contains a variety of information that describes each block.
 
 * *fixation_time*, another integer value that represents milliseconds, controls how long the fixation cross *+* is shown before a stimulus is presented to the subject.
 
-* The *positive_img*,*negative_img*,and *neutral_img* columns provide the url of the image that is to be presented along with positive, negative, and neutral feedback.
+* The *positive_img*, *negative_img* and *neutral_img* columns provide the url of the image that is to be presented along with positive, negative, and neutral feedback.
 
-* The *timestamp* column is automatically generated and gives the time and date of the block*s creation.
+* The *timestamp* column is automatically generated and gives the time and date of the block's creation.
 
 * The *js_file* column provides the javascript file that is to be used for that specific block to govern any interactivity. The *prac_js* column has the same function except that it is used for the practice portion of that block instead of the main trial.
 

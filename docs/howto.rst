@@ -69,8 +69,8 @@ Then, look for the 'Export' tab along the top of the page. Select this tab and y
 of options. You can export the data to a .csv file, an excel file, or many other file types. Once you have 
 selected all the options you want, simply hit go and the file will be downloaded to your computer. 
 
-Note that SQL has a memory limit on the amount of data it can export at a single time. Make sure to check the downloaded
-file to see if all the data was exported correctly.
+Note that PhpMyAdmin has a memory limit on the amount of data it can export at a single time. Make sure to check the
+downloaded file to see if all the data was exported correctly.
 
 Generating new Subjects
 =======================

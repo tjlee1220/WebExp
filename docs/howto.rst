@@ -32,8 +32,10 @@ column. First, you would begin your array with:
 	
     a:3:{}
 
-This means that you are creating an array with three key => value pairs. Next, you would insert these key => 
-pairs into your serialized array. Your finished product would look like this:
+This means that you are creating an array with three key => value pairs.
+
+Next, you would insert these key => value pairs into your serialized array and your finished product would look like
+this:
 
 ::
 

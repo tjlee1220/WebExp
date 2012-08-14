@@ -80,7 +80,7 @@ the 'Insert' tab along the top. You will be presented with a blank form with inp
 'assigned_task', 'notes', and 'timestamp'. The 'id' and 'timestamp' columns are automatically generated so you will not
 have to input any values for them. The 'md5_identifier' column must contain a unique number that is used to keep track
 of a subject while participating in a task. The 'assigned_task' column must contain the id number of the task you wish
-this particular subject to carry out (See 'Setting up a new Task').
+this particular subject to carry out (See 'Setting up a new task').
 
 Description of Database Tables
 ==============================
@@ -89,7 +89,7 @@ Blocks
 ------
 
 Blocks are individual experiments that subjects participate in. A single block or multiple blocks make up a task
-which is then assigned to the subject (See "Setting Up a New Task"). The 'blocks' table contains a variety of
+which is then assigned to the subject (See "Setting up a new task"). The 'blocks' table contains a variety of
 information that describes each block. The first column is the Primary_id that SQL uses to keep track of every
 individual entry.
 
@@ -122,7 +122,7 @@ The 'js_file' column provides the javascript file that is to be used for that sp
 interactivity. The 'prac_js" column has the same function except that it is used for the practice portion of that block
 instead of the main trial.
 
-The 'valid_responses' column contains a serialized php array (See 'Setting Up a new Task') that describes which keys are
+The 'valid_responses' column contains a serialized php array (See 'Setting up a new task') that describes which keys are
 considered valid responses during the block. The default value for this column is:
 
 ::
@@ -148,7 +148,7 @@ entry in the table represents an individual trial, which is the presentation of 
 stimuli to the subject.
 
 The next 'subject' column contains the subject number assigned to each subject through amazon mechanical turk. New
-subjects and their assigned tasks can be created in the subjects table (See 'Creating new Subjects').
+subjects and their assigned tasks can be created in the subjects table (See 'Generating new subjects').
 
 The 'trial_id' column contains an integer that is used to describe the individual trial. For example, the number '123'
 could represent a trial with a blue stimlus presented on the left side of the screen with a condition of 3. In this 
@@ -194,7 +194,7 @@ integer value can be used to describe the trial can be found in the 'Results' Se
     left side, and '3' could represent the trial's condition, which will be explained later on.
 
 The 'block_id' column holds the id number of the block that the trial is a part of.
-The 'stims' column contains a serialized php array (See 'Setting Up a new Task') that describes which stimuli will be
+The 'stims' column contains a serialized php array (See 'Setting up a new task') that describes which stimuli will be
 presented during that trial.
 
 The 'correct' column also contains a serialized php array that describes the feedback given by each stimulus in the

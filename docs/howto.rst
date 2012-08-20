@@ -120,6 +120,7 @@ Blocks are individual experiments that subjects participate in. A
 single block or multiple blocks make up a task which is then assigned
 to the subject (see "Setting up a new task"). The 'blocks' table
 contains a variety of information that describes each block.
+<<<<<<< HEAD
 
 * The first column is the Primary_id that SQL uses to keep track of every individual entry. You must assign a unique one
 for each item.
@@ -155,6 +156,32 @@ instead of the main trial.
 
 * The *valid_responses* column contains a serialized php array (See *Setting up a new task*) that describes which keys
 are considered valid responses during the block. The default value for this column is:
+=======
+
+* The first column is the Primary_id that SQL uses to keep track of every individual entry. You must assign a unique one for each item.
+
+* The next column is *exp_id* or experiment id which is linked to the *experiments* table which describes stimulus mapping within each block.
+
+* The *name* column contains the name of the block and it is displayed as the title of block_view.php when viewed by the subject.
+
+* The *instruction_text* column contains the instructions for each block that is displayed to the user when they are viewing the block_view.php html document.
+
+* The *notes* column is optional and is there for anything that you would want to write about a block.
+
+* The *timeout* column contains an integer value that describes the amount of time, in milliseconds, alloted to the user to respond to the stimulus presented in a trial.
+
+* *fb_time*, also an integer value that represents milliseconds, tells the program how long to keep feedback on the screen after the subject has responded to a stimulus.
+
+* *fixation_time*, another integer value that represents milliseconds, controls how long the fixation cross *+* is shown before a stimulus is presented to the subject.
+
+* The *positive_img*, *negative_img* and *neutral_img* columns provide the url of the image that is to be presented along with positive, negative, and neutral feedback.
+
+* The *timestamp* column is automatically generated and gives the time and date of the block's creation.
+
+* The *js_file* column provides the javascript file that is to be used for that specific block to govern any interactivity. The *prac_js* column has the same function except that it is used for the practice portion of that block instead of the main trial.
+
+* The *valid_responses* column contains a serialized php array (See *Setting up a new task*) that describes which keys are considered valid responses during the block. The default value for this column is:
+>>>>>>> 7609af89ca81234c767da6416e5b1e2e10455288
 
 ::
 
@@ -163,27 +190,41 @@ are considered valid responses during the block. The default value for this colu
 This particular array provides 'd' and 'k' as the two valid responses to a stimulus. The 'd' and 'k' keys
 are there by default but can be substituted for any other set of keys.
 
+<<<<<<< HEAD
 * The 'trial_type' column can contain either '1' or '2'. '1' means that the block is a training block and '2' means that
 the block is a test block.
 
 * The final 'practice' column contains either '0' or '1'. '0' means that practice is turned off for that block and '1'
 means that practice is turned on. If practice is turned on then the subject will have to complete a practice phase
 before starting the main trial. Be sure to provide a 'prac_js' file if practice is turned on for a block.
+=======
+* The 'trial_type' column can contain either '1' or '2'. '1' means that the block is a training block and '2' means that the block is a test block.
+
+* The final 'practice' column contains either '0' or '1'. '0' means that practice is turned off for that block and '1' means that practice is turned on. If practice is turned on then the subject will have to complete a practice phase before starting the main trial. Be sure to provide a 'prac_js' file if practice is turned on for a block.
+>>>>>>> 7609af89ca81234c767da6416e5b1e2e10455288
 
 Results
 -------
 
 The results table contains all the information on a subject's individual performance in a block. The first
+<<<<<<< HEAD
 column
 
 * *Overall Trial Number Across Block* is the SQL Primary_id which keeps track of each individual entry. Each
+=======
+column 'Overall Trial Number Across Block' is the SQL Primary_id which keeps track of each individual entry. Each
+>>>>>>> 7609af89ca81234c767da6416e5b1e2e10455288
 entry in the table represents an individual trial, which is the presentation of a single stimulus or group of
 stimuli to the subject.
 
 * The next *subject* column contains the subject number assigned to each subject through amazon mechanical turk. New
 subjects and their assigned tasks can be created in the subjects table (See 'Generating new subjects').
 
+<<<<<<< HEAD
 * The *trial_id* column contains an integer that is used to describe the individual trial. For example, the number '123'
+=======
+The 'trial_id' column contains an integer that is used to describe the individual trial. For example, the number '123'
+>>>>>>> 7609af89ca81234c767da6416e5b1e2e10455288
 could represent a trial with a blue stimlus presented on the left side of the screen with a condition of 3. In this
 example, '1' could represent a blue stimulus, '2' could represent the left side, and '3' could represent the trial's
 condition, which will be explained later on (See 'Trials').
@@ -198,7 +239,11 @@ presses the 'd' key, then 'd' will be inserted into the column.
 * The *stim_loc* is a somewhat redundant column that gives a '0' if the valid button on the left is pressed
 i.e. 'd', a '1' if the valid button on the right is pressed i.e. 'k', and a '-1' if no valid key is pressed.
 
+<<<<<<< HEAD
 * The *feedback* column describes the type of feedback presented to the user based on their response to the stimulus.
+=======
+The 'feedback' column describes the type of feedback presented to the user based on their response to the stimulus.
+>>>>>>> 7609af89ca81234c767da6416e5b1e2e10455288
 '1' denotes positive feedback, '0' denotes negative feedback, '2' denotes neutral feedback, '3' denotes no feedback
 (which is common during test blocks), and '-1' denotes no response.
 
@@ -208,8 +253,13 @@ no response is given. '
 * *block_set_id* is unique for each individual block and is used to distinguish one block from another within the
 results.
 
+<<<<<<< HEAD
 * The final column *trial_type* is related to the 'trial_type' column from the 'blocks' table (See 'Blocks'). '1'
 denotes a training block and '2' denotes a testing block.
+=======
+The final column 'trial_type' is related to the 'trial_type' column from the 'blocks' table (See 'Blocks'). '1' denotes
+a training block and '2' denotes a testing block.
+>>>>>>> 7609af89ca81234c767da6416e5b1e2e10455288
 
 Trials
 ------

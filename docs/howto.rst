@@ -122,39 +122,39 @@ to the subject (see "Setting up a new task"). The 'blocks' table
 contains a variety of information that describes each block.
 
 * The first column is the Primary_id that SQL uses to keep track of every individual entry. You must assign a unique one
-for each item.
+  for each item.
 
 * The next column is *exp_id* or experiment id which is linked to the *experiments* table which describes stimulus
-mapping within each block.
+  mapping within each block.
 
 * The *name* column contains the name of the block and it is displayed as the title of block_view.php when viewed by the
-subject.
+  subject.
 
 * The *instruction_text* column contains the instructions for each block that is displayed to the user when they are
-viewing the block_view.php html document.
+  viewing the block_view.php html document.
 
 * The *notes* column is optional and is there for anything that you would want to write about a block.
 
 * The *timeout* column contains an integer value that describes the amount of time, in milliseconds, alloted to the user
-to respond to the stimulus presented in a trial.
+  to respond to the stimulus presented in a trial.
 
 * *fb_time*, also an integer value that represents milliseconds, tells the program how long to keep feedback on the
-screen after the subject has responded to a stimulus.
+  screen after the subject has responded to a stimulus.
 
 * *fixation_time*, another integer value that represents milliseconds, controls how long the fixation cross *+* is shown
-before a stimulus is presented to the subject.
+  before a stimulus is presented to the subject.
 
 * The *positive_img*, *negative_img* and *neutral_img* columns provide the url of the image that is to be presented
-along with positive, negative, and neutral feedback.
+  along with positive, negative, and neutral feedback.
 
 * The *timestamp* column is automatically generated and gives the time and date of the block's creation.
 
 * The *js_file* column provides the javascript file that is to be used for that specific block to govern any
-interactivity. The *prac_js* column has the same function except that it is used for the practice portion of that block
-instead of the main trial.
+  interactivity. The *prac_js* column has the same function except that it is used for the practice portion of that
+  block instead of the main trial.
 
 * The *valid_responses* column contains a serialized php array (See *Setting up a new task*) that describes which keys
-are considered valid responses during the block. The default value for this column is:
+  are considered valid responses during the block. The default value for this column is:
 
 ::
 
@@ -164,11 +164,11 @@ This particular array provides 'd' and 'k' as the two valid responses to a stimu
 are there by default but can be substituted for any other set of keys.
 
 * The 'trial_type' column can contain either '1' or '2'. '1' means that the block is a training block and '2' means that
-the block is a test block.
+  the block is a test block.
 
 * The final 'practice' column contains either '0' or '1'. '0' means that practice is turned off for that block and '1'
-means that practice is turned on. If practice is turned on then the subject will have to complete a practice phase
-before starting the main trial. Be sure to provide a 'prac_js' file if practice is turned on for a block.
+  means that practice is turned on. If practice is turned on then the subject will have to complete a practice phase
+  before starting the main trial. Be sure to provide a 'prac_js' file if practice is turned on for a block.
 
 Results
 -------

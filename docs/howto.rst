@@ -160,8 +160,8 @@ contains a variety of information that describes each block.
 
     a:2:{i:0;s:1:"d";i:1;s:1:"k";}
 
-This particular array provides 'd' and 'k' as the two valid responses to a stimulus. The 'd' and 'k' keys
-are there by default but can be substituted for any other set of keys.
+  This particular array provides 'd' and 'k' as the two valid responses to a stimulus. The 'd' and 'k' keys
+  are there by default but can be substituted for any other set of keys.
 
 * The 'trial_type' column can contain either '1' or '2'. '1' means that the block is a training block and '2' means that
   the block is a test block.
@@ -177,39 +177,39 @@ The results table contains all the information on a subject's individual perform
 column
 
 * *Overall Trial Number Across Block* is the SQL Primary_id which keeps track of each individual entry. Each
-entry in the table represents an individual trial, which is the presentation of a single stimulus or group of
-stimuli to the subject.
+  entry in the table represents an individual trial, which is the presentation of a single stimulus or group of
+  stimuli to the subject.
 
 * The next *subject* column contains the subject number assigned to each subject through amazon mechanical turk. New
-subjects and their assigned tasks can be created in the subjects table (See 'Generating new subjects').
+  subjects and their assigned tasks can be created in the subjects table (See 'Generating new subjects').
 
 * The *trial_id* column contains an integer that is used to describe the individual trial. For example, the number '123'
-could represent a trial with a blue stimlus presented on the left side of the screen with a condition of 3. In this
-example, '1' could represent a blue stimulus, '2' could represent the left side, and '3' could represent the trial's
-condition, which will be explained later on (See 'Trials').
+  could represent a trial with a blue stimlus presented on the left side of the screen with a condition of 3. In this
+  example, '1' could represent a blue stimulus, '2' could represent the left side, and '3' could represent the trial's
+  condition, which will be explained later on (See 'Trials').
 
 * *trial_number_per_block* represents the order in which each stimulus is presented in its specific block.
 
 * *key_pressed* shows the key that was pressed by the user in response to the stimulus. 'no respo' simply means that the
-subject did not provide a valid response within the alloted time. If the subject provides a valid response, then that
-key will be inserted into the column. For example if the valid responses for a block are 'd' and 'k' and the subject
-presses the 'd' key, then 'd' will be inserted into the column.
+  subject did not provide a valid response within the alloted time. If the subject provides a valid response, then that
+  key will be inserted into the column. For example if the valid responses for a block are 'd' and 'k' and the subject
+  presses the 'd' key, then 'd' will be inserted into the column.
 
 * The *stim_loc* is a somewhat redundant column that gives a '0' if the valid button on the left is pressed
-i.e. 'd', a '1' if the valid button on the right is pressed i.e. 'k', and a '-1' if no valid key is pressed.
+  i.e. 'd', a '1' if the valid button on the right is pressed i.e. 'k', and a '-1' if no valid key is pressed.
 
 * The *feedback* column describes the type of feedback presented to the user based on their response to the stimulus.
-'1' denotes positive feedback, '0' denotes negative feedback, '2' denotes neutral feedback, '3' denotes no feedback
-(which is common during test blocks), and '-1' denotes no response.
+  '1' denotes positive feedback, '0' denotes negative feedback, '2' denotes neutral feedback, '3' denotes no feedback
+  (which is common during test blocks), and '-1' denotes no response.
 
 * *reaction_time* shows, in milliseconds, how long it took for the subject to respond to a stimulus. '-1' is inserted if
-no response is given. '
+  no response is given. '
 
 * *block_set_id* is unique for each individual block and is used to distinguish one block from another within the
-results.
+  results.
 
 * The final column *trial_type* is related to the 'trial_type' column from the 'blocks' table (See 'Blocks'). '1'
-denotes a training block and '2' denotes a testing block.
+  denotes a training block and '2' denotes a testing block.
 
 Trials
 ------
@@ -220,7 +220,7 @@ is simply the presentation of a single stimulus or group of stimuli that the sub
 * The first *trial_id* column is the Primary_id for the sql table, which keeps track of each entry.
 
 * The next column *id* contains an integer value that describes the individual trial. A thorough explaination of how
-this integer value can be used to describe the trial can be found in the 'Results' Section and will be quoted here:
+  this integer value can be used to describe the trial can be found in the 'Results' Section and will be quoted here:
 
 ::
 
@@ -229,35 +229,35 @@ this integer value can be used to describe the trial can be found in the 'Result
     left side, and '3' could represent the trial's condition, which will be explained later on.
 
 * The *block_id* column holds the id number of the block that the trial is a part of.
-The 'stims' column contains a serialized php array (See 'Setting up a new task') that describes which stimuli will be
-presented during that trial.
+  The 'stims' column contains a serialized php array (See 'Setting up a new task') that describes which stimuli will be
+  presented during that trial.
 
 * The *correct* column also contains a serialized php array that describes the feedback given by each stimulus in the
-trial.
+  trial.
 
 * The *condition* column holds 1, 2, 3, 4, or 0. '1' denotes a trial that always provides positive feedback. '2' denotes
-a congruent trial, this could mean that if a yellow stimulus is presented on the left, then the subject wil receive
-positive feedback, but if the yellow stimulus is presented on the right, the subject will receive neutral feedback.
-'3' denotes an incongruent trial, this could mean that if a yellow stimulus is presented on the left, the subject will
-receive neutral feedback for a correct response but will receive positive feedback if the yellow stimulus in presented
-on the right side. Condition '4' denotes a trial that is never rewarding and will always provide neutral feedback for a
-correct response. Condition '0' is used for testing phases where no feedback is provided to the subject.
+  a congruent trial, this could mean that if a yellow stimulus is presented on the left, then the subject wil receive
+  positive feedback, but if the yellow stimulus is presented on the right, the subject will receive neutral feedback.
+  '3' denotes an incongruent trial, this could mean that if a yellow stimulus is presented on the left, the subject will
+  receive neutral feedback for a correct response but will receive positive feedback if the yellow stimulus in presented
+  on the right side. Condition '4' denotes a trial that is never rewarding and will always provide neutral feedback for
+  a correct response. Condition '0' is used for testing phases where no feedback is provided to the subject.
 
 Stimulus_Images
 ---------------
 
-The *stimulus_images* table contains all the information on the images used as stimuli in the blocks. The first column
-is the Primary_id which tracks each entry into the table.
+* The *stimulus_images* table contains all the information on the images used as stimuli in the blocks. The first column
+  is the Primary_id which tracks each entry into the table.
 
-The next column is 'exp_id' which contains an integer to associate each image with conditions defined in the
-'experiments' table. These conditions include randomization, preservation of stimulus mapping , and stimulus grouping.
+* The next column is 'exp_id' which contains an integer to associate each image with conditions defined in the
+ 'experiments' table. These conditions include randomization, preservation of stimulus mapping , and stimulus grouping.
 
-The 'stim_id' column helps keep track of each image in its individual block.
+* The *stim_id* column helps keep track of each image in its individual block.
 
-The 'img' column contains the source url of the image so it can be loaded within the program.
+* The *img* column contains the source url of the image so it can be loaded within the program.
 
-'stim_grp' is used group to stimuli together if they are to be presented together.
+* *stim_grp* is used group to stimuli together if they are to be presented together.
 
-The 'notes' column is once again optional and is used to provide any extra
-description of the image.
+* The *notes* column is once again optional and is used to provide any extra
+  description of the image.
 

@@ -160,7 +160,7 @@ contains a variety of information that describes each block.
 
     a:2:{i:0;s:1:"d";i:1;s:1:"k";}
 
-  This particular array provides 'd' and 'k' as the two valid responses to a stimulus. The 'd' and 'k' keys
+* This particular array provides 'd' and 'k' as the two valid responses to a stimulus. The 'd' and 'k' keys
   are there by default but can be substituted for any other set of keys.
 
 * The 'trial_type' column can contain either '1' or '2'. '1' means that the block is a training block and '2' means that
@@ -250,7 +250,7 @@ Stimulus_Images
   is the Primary_id which tracks each entry into the table.
 
 * The next column is 'exp_id' which contains an integer to associate each image with conditions defined in the
- 'experiments' table. These conditions include randomization, preservation of stimulus mapping , and stimulus grouping.
+  *experiments* table. These conditions include randomization, preservation of stimulus mapping , and stimulus grouping.
 
 * The *stim_id* column helps keep track of each image in its individual block.
 

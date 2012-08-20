@@ -246,8 +246,9 @@ is simply the presentation of a single stimulus or group of stimuli that the sub
 Stimulus_Images
 ---------------
 
-* The *stimulus_images* table contains all the information on the images used as stimuli in the blocks. The first column
-  is the Primary_id which tracks each entry into the table.
+The *stimulus_images* table contains all the information on the images used as stimuli in the blocks.
+
+* The first column is the Primary_id which tracks each entry into the table.
 
 * The next column is 'exp_id' which contains an integer to associate each image with conditions defined in the
   *experiments* table. These conditions include randomization, preservation of stimulus mapping , and stimulus grouping.
